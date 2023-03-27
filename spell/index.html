@@ -16,28 +16,50 @@
 </head>
 
 <body>
-    <script type="module" src="scripts/index.js"></script>
+    <script async type="module" src="scripts/index.js"></script>
+
     <div class="title">
         <h1>Guess the Champion with a Spell description</h1>
     </div>
     <div class="game">
         <div class="ability">
-            <p class="description" id="description">
-                The ability will appear here.
-            </p>
-            <input type="text" name="guess" class="guess" id="guess" placeholder="Champion">
-            <div class="timer" id="timer">
-                <script src="scripts/timer.js"></script>
+            <div class="league-box">
+                <p class="description" id="description">
+                    The ability will appear here.
+                </p>
+                <div class="countdown">
+                    <div class="timer" id="timer">
+                    </div>
+                </div>
             </div>
+            <!-- <form autocomplete="off"> -->
+                <div class="autocomplete">
+                    <input type="text" name="guess" class="league-button guess" id="guess" placeholder="Champion">
+                    <!-- <button><img width="30" height="30" src="/images/icon/strike.webp"></button> -->
+                </div>
+            <!-- </form> -->
         </div>
         <div class="informations">
-            <div class="stat">
+            <div class="league-box stat">
                 <p class="lives" id="lives">0</p>
-                <img src="/images/icon/health.webp">
+                <p class="stat-description">
+                    <img src="/images/icon/health.webp">
+                    Lives left
+                </p>
             </div>
-            <div class="stat">
+            <div class="league-box stat">
+                <p class="streak" id="streak">0</p>
+                <p class="stat-description">
+                    <img src="/images/icon/streak.webp">
+                    Combo Streak
+                </p>
+            </div>
+            <div class="league-button stat">
                 <p class="skip" id="skip">0</p>
-                <img src="/images/icon/Experience_icon.webp">
+                <p class="stat-description">
+                    <img src="/images/icon/skip.webp">
+                    Skip left
+                </p>
             </div>
         </div>
     </div>

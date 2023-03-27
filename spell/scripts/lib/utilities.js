@@ -12,19 +12,26 @@ export function pushIfNotPresent(array, element) {
     return;
 }
 
+
 /**
- * This function takes an array and a number as arguments and removes all elements from the array that
- * have the same length as the number.
+ * It takes an array of strings, and removes any strings that are either one character long, or equal
+ * to "IV"
  * 
  * Args:
- *   array: the array to be filtered
- *   length: the length of the elements you want to remove
+ *   array: an array of strings
+ * 
+ * Returns:
+ *   Nothing.
  */
-export function getRidOfLenght(array, length) {
+export function clearSurnames(array) {
     for (const element of array) {
-        if (element.length === length) {
+        if (element.length === 1) {
             const index = array.indexOf(element);
             array.splice(index, 1);
+        }
+        else if (element === "IV") {
+            const index = array.indexOf(element);
+            array.splice(index, 1); 
         }
     }
     return;

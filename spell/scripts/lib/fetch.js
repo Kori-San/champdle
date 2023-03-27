@@ -1,4 +1,4 @@
-import { pushIfNotPresent, getRidOfLenght } from "./utilities.js";
+import { pushIfNotPresent, clearSurnames as cleanSurnames } from "./utilities.js";
 
 /**
  * It's getting the latest version of the game from the API
@@ -18,6 +18,21 @@ export async function getLatestVersion() {
     return data[0];
 }
 
+export async function getAllChamp(url, imgURL) {
+    /* It's fetching the data from the API and getting the data from the response. */
+    const response = await fetch(url + "champion.json");
+    const data = await response.json();
+
+    /* Getting the list of champions from the data. */
+    const champList = [];
+    
+    for (const key in data.data) {
+        champList.push([imgURL + data.data[key].id + ".png", data.data[key].name]);
+    }
+
+    /* It's getting the URL of the champion. */
+    return champList;
+};
 
 /**
  * It's getting the data from the API, getting the list of champions, getting a random number between 0
@@ -30,9 +45,9 @@ export async function getLatestVersion() {
  * Returns:
  *   The URL of the champion.
  */
-export async function getRandomChamp(url) {
+export async function getRandomChampURL(url) {
     /* It's fetching the data from the API and getting the data from the response. */
-    const response = await fetch(url + "/champion.json");
+    const response = await fetch(url + "champion.json");
     const data = await response.json();
 
     /* Getting the list of champions from the data. */
@@ -45,7 +60,7 @@ export async function getRandomChamp(url) {
     const champId = champList[randomIndex];
 
     /* It's getting the URL of the champion. */
-    const champURL = url + "/champion/" + champId + ".json";
+    const champURL = url + "champion/" + champId + ".json";
     return champURL;
 };
 
@@ -89,7 +104,7 @@ export async function getRandomAbilty(url) {
     /* It's splitting the name of the champion into an array of strings. */
     const surnames = champName.split(' ');
 
-    getRidOfLenght(surnames, 1);
+    cleanSurnames(surnames);
 
     for (const surname of surnames) {
         /* It's replacing the surname with ???. */
