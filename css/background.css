@@ -1,0 +1,6 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)),
+        url(/images/background.jpg) no-repeat 50% fixed;
+    background-size: cover;
+}

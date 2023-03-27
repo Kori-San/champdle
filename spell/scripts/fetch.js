@@ -1,10 +1,12 @@
+import { pushIfNotPresent, getRidOfLenght } from "./utilities.js";
+
 /**
- * It's getting the latest version of the game
+ * It's getting the latest version of the game from the API
  * 
  * Returns:
  *   The first element of the data array.
  */
-async function getLatestVersion() {
+export async function getLatestVersion() {
     const url = "https://ddragon.leagueoflegends.com/api/versions.json";
 
     /* It's fetching the data from the API. */
@@ -16,17 +18,22 @@ async function getLatestVersion() {
     return data[0];
 }
 
+
 /**
- * We're fetching the data from the API, getting the list of champions, getting a random number between
- * 0 and the length of the list of champions, and returning the name of the champion
+ * It's getting the data from the API, getting the list of champions, getting a random number between 0
+ * and the length of the list of champions, getting the name of the champion from the list of
+ * champions, and getting the URL of the champion
+ * 
+ * Args:
+ *   url: The URL of the API.
  * 
  * Returns:
- *   The name of the champion.
+ *   The URL of the champion.
  */
-async function getRandomChamp(url) {
+export async function getRandomChamp(url) {
     /* It's fetching the data from the API and getting the data from the response. */
-    const response = await fetch(url + "/champion.json"); // fetch(url) -> (response) => {...}
-    const data = await response.json() // (response) => {...} -> (data) => {...}
+    const response = await fetch(url + "/champion.json");
+    const data = await response.json();
 
     /* Getting the list of champions from the data. */
     const champList = (Object.keys(data.data));
@@ -42,7 +49,16 @@ async function getRandomChamp(url) {
     return champURL;
 };
 
-async function getRandomAbilty(url) {
+/**
+ * It's getting the description of a random ability of a random champion.
+ * 
+ * Args:
+ *   url: The URL of the API.
+ * 
+ * Returns:
+ *   It's returning an array with the description of the ability and the list of surnames.
+ */
+export async function getRandomAbilty(url) {
     /* It's fetching the data from the API and getting the data from the response. */
     const response = await fetch(url);
     const data = await response.json();
@@ -61,6 +77,8 @@ async function getRandomAbilty(url) {
 
     /* Getting a random number between 0 and the length of the champList. */
     const randomIndex = Math.floor(Math.random() * spells.length);
+
+    /* It's getting the description of the spell. */
     let randomAbility = spells[randomIndex]
         /* It's replacing the name of the champion with ???. */
         .replaceAll(champName, "???")
@@ -68,39 +86,22 @@ async function getRandomAbilty(url) {
         /* It's removing the HTML tags from the description of the spell. */
         .replace(/<[^>]*>/g, "");
 
-    /* It's replacing the name of the champion with ???. */
+    /* It's splitting the name of the champion into an array of strings. */
     const surnames = champName.split(' ');
+
+    getRidOfLenght(surnames, 1);
+
     for (const surname of surnames) {
+        /* It's replacing the surname with ???. */
         randomAbility = randomAbility.replaceAll(surname, "???");
     }
 
-    return [randomAbility, url, champId, champName];
+    // /!\ CARE /!\ : JarvanIV - Can enter IV.
+
+    /* It's adding the name of the champion and the ID of the champion to the list of surnames. */
+    pushIfNotPresent(surnames, champId[0]);
+    pushIfNotPresent(surnames, champName);
+
+    /* It's returning an array with the description of the ability and the list of surnames. */
+    return [randomAbility, surnames, champName];
 }
-
-getLatestVersion().then((version) => {
-    const url = "https://ddragon.leagueoflegends.com/cdn/" + version + "/data/en_US";
-    getRandomChamp(url).then((champURL) => {
-            getRandomAbilty(champURL).then((info) => {
-                const randomAbility = info[0];
-                const url = info[1];
-                const champId = info[2][0];
-                const champName = info[3];
-
-                document.getElementById("champion").innerHTML = randomAbility;
-                const guessInput = document.getElementById('guess')
-                guessInput.onkeydown = function (event) {
-                    if (event.key === "Enter") {
-                        event.preventDefault();
-
-                        const guess = guessInput.value.toLowerCase();
-                        if (guess === champId.toLowerCase() || guess === champName.toLowerCase()) {
-                            console.log("gg");
-                            return;
-                        } else {
-                            // WRONG ANSWER HERE
-                        }
-                    };
-                }
-            })
-        })
-});

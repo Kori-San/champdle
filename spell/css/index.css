@@ -1,0 +1,111 @@
+.title {
+    display: flex;
+    justify-content: center;
+    color:aliceblue;
+    margin-top: 75px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.game {
+    /* It's setting the element to be a flexbox and it's centering the content of the element. */
+    display: flex;
+    justify-content: center;
+
+    /* It's adding a gap of 15px between each element. */
+    gap: 25px;
+
+    /* It's adding a margin of 100px to the top of the element. */
+    margin: 25px;
+}
+
+.ability {
+    /* It's setting the element to be a flexbox and it's centering the content of the element. */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    /* It's setting the max width of the element to 30% of the screen and it's allowing the text to wrap
+    anywhere. */
+    max-width: 25%;
+
+    /* It's adding padding to the element. */
+    padding: 15px;
+
+    /* It's adding a background color, a box shadow, a border image, a border image slice, a border width,
+    and a border style to the element. */
+    background: #1e2328;
+    box-shadow: inset 0 0 2px #000000;
+    border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
+    border-image-slice: 1;
+    border-width: 3px;
+    border-style: dashed;
+    gap: 15px;
+}
+
+.description {
+    /* It's centering the text and it's adding a space of 1.5px between each letter. */
+    text-align: center;
+    letter-spacing: 1.5px;
+
+    /* It's setting the color of the text. */
+    color: #cdbe91;
+
+    /* It's allowing the text to wrap anywhere. */
+    overflow-wrap: anywhere;
+
+    /* It's setting the font of the text to Roboto. */
+    font-family: 'Roboto', sans-serif;
+}
+
+.informations {
+    /* It's setting the element to be a flexbox and it's centering the content of the element. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* It's adding padding to the element. */
+    padding: 15px;
+
+    background: #1e2328;
+    box-shadow: inset 0 0 2px #000000;
+    border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
+    border-image-slice: 1;
+    border-width: 3px;
+    border-style: dashed;
+}
+
+.stat {
+    /* It's setting the element to be a flexbox and it's centering the content of the element. */
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    /* It's centering the text. */
+    text-align: center;
+
+    /* It's setting the color of the text. */
+    color: #cdbe91;
+    /* It's setting the font of the text to Rubik. */
+    font-family: 'Rubik', sans-serif;
+}
+
+.stat img {
+    /* It's centering the image. */
+    margin: auto;
+
+    width: 15px;
+    height: 15px;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+    background: linear-gradient(#33d9b2 0%, #218c74 100%);
+    height: 5px;
+    width: 100%;
+
+    transition-duration: 0.3ms;
+}

@@ -6,14 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Champdle</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/background.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-    <script src="scripts/fetch.js"></script>
-    <div>
-        <p id="champion"></p>
-        <input type="text" name="guess" id="guess" placeholder="Champion">
+    <script type="module" src="scripts/index.js"></script>
+    <div class="title">
+        <h1>Guess the Champion with a Spell description</h1>
     </div>
+    <div class="game">
+        <div class="ability">
+            <p class="description" id="description">
+                The ability will appear here.
+            </p>
+            <input type="text" name="guess" class="guess" id="guess" placeholder="Champion">
+            <div class="timer" id="timer">
+                <script src="scripts/timer.js"></script>
+            </div>
+        </div>
+        <div class="informations">
+            <div class="stat">
+                <p class="lives" id="lives">0</p>
+                <img src="/images/icon/health.webp">
+            </div>
+            <div class="stat">
+                <p class="skip" id="skip">0</p>
+                <img src="/images/icon/Experience_icon.webp">
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
