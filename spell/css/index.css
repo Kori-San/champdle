@@ -1,66 +1,15 @@
-.title {
-    display: flex;
-    justify-content: center;
-    color: aliceblue;
-    margin-top: 75px;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-}
-
 .game {
     /* It's setting the element to be a flexbox and it's centering the content of the element. */
     display: flex;
     justify-content: center;
 
-    /* It's adding a gap of 15px between each element. */
+    /* It's adding a gap of 25px between each element. */
     gap: 25px;
-
-    /* It's adding a margin of 100px to the top of the element. */
-    margin: 25px;
-}
-
-.league-box {
-    background: #1e2328;
-    box-shadow: inset 0 0 2px #000000;
-    border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
-    border-image-slice: 1;
-    border-width: 3px;
-    border-style: dashed;
-
-    /* It's adding padding to the element. */
-    padding: 10px;
-}
-
-.league-button {
-    background: #1e2328;
-    box-shadow: inset 0 0 2px #000000;
-    border-image: linear-gradient(to bottom, #0df6fc, #0a9bc4);
-    border-image-slice: 1;
-    border-width: 3px;
-    border-style: dashed;
-
-    /* It's adding padding to the element. */
-    padding: 10px;
-
-    transition: all 0.3ms ease-out;
-
-    /* It's centering the text. */
-    text-align: center;
-
-    /* It's setting the color of the text. */
-    color: #cdbe91;
-    /* It's setting the font of the text to Rubik. */
-    font-family: 'Rubik', sans-serif;
 }
 
 .submit {
+    /* It's adding a margin of 15px to the element. */
     margin: 15px;
-}
-
-.league-button:hover {
-    cursor: pointer;
-    box-shadow: 0 5px 10px #076571;
-    transition: all 0.3ms ease-out;
 }
 
 .ability {
@@ -69,8 +18,8 @@
     justify-content: center;
     flex-direction: column;
 
-    /* It's setting the max width of the element to 30% of the screen and it's allowing the text to wrap
-    anywhere. */
+    /* It's setting the width of the element to 25%, it's adding a padding of 25px to the element, it's
+    adding a gap of 15px to the element and it's adding a padding of 5% to the element. */
     width: 25%;
     padding: 25px;
     gap: 15px;
@@ -78,50 +27,56 @@
 }
 
 .description {
-    /* It's centering the text and it's adding a space of 1.5px between each letter. */
-    text-align: center;
+    /* It's adding a space of 1.5px between each letter. */
     letter-spacing: 1.5px;
 
+    /* It's setting the maximum height of the element to 100px. */
     max-height: 100px;
-
-    /* It's setting the color of the text. */
-    color: #cdbe91;
 
     /* It's allowing the text to wrap anywhere. */
     overflow: auto;
+
+    /* It's centering the element. */
     margin: auto;
 
-    /* It's setting the font of the text to Roboto. */
-    font-family: 'Roboto', sans-serif;
-
+    /* It's adding a padding of 20px to the element. */
     padding: 20px;
 }
 
 .autocomplete {
-    /*the container must be positioned relative:*/
+    /* It's setting the element to be a flexbox and it's centering the content of the element. */
     position: relative;
     display: flex;
     justify-content: center;
+
+    /* It's centering the element, it's setting the width of the element to 100% and it's adding a gap of
+    15px to the element. */
     margin: auto;
     width: 100%;
     gap: 15px;
 }
 
 .autocomplete-items {
+    /* It's removing the border of the element. */
     position: absolute;
     border-bottom: none;
     border-top: none;
+
+    /* It's setting the z-index of the element to 99. */
     z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
+
+    /* It's setting the top of the element to 100% and it's setting the width of the element to 100%. */
     top: 100%;
     width: 100%;
-    color: #cdbe91;
 
+    /* It's setting the height of the element to 200px and it's allowing the element to scroll. */
     height: 200px;
     overflow: auto;
 }
 
 .suggestion {
+    /* It's adding a padding of 10px to the element, it's changing the cursor to a pointer when hovering
+    the element and it's changing the background color of the element. */
     padding: 10px;
     cursor: pointer;
     background-color: #1e2328;
@@ -148,20 +103,12 @@
     background-color: #00434f;
 }
 
-.autocomplete-active {
-    /*when navigating through the items using the arrow keys:*/
-    background-color: DodgerBlue !important;
-    color: #ffffff;
-}
-
 .guess-box {
     display: block ruby;
 }
 
 .guess {
     width: 100%;
-    color: #cdbe91;
-    text-align: center;
 }
 
 .countdown {
@@ -191,6 +138,8 @@
     color: #cdbe91;
     /* It's setting the font of the text to Rubik. */
     font-family: 'Rubik', sans-serif;
+    font-weight: lighter;
+    font-variant: small-caps;
 }
 
 .stat-description img {

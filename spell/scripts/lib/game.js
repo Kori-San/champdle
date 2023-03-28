@@ -37,6 +37,7 @@ export async function game() {
         document.getElementById("streak").innerHTML = streak;
     }
 
+    document.getElementById("description").scrollTop = 0;
     displayGameInfo();
 
     /* It's resetting the timer. */
@@ -87,21 +88,13 @@ export async function game() {
         }
     }
 
-    function skipButton() {
-        if (skip === 0) {
-            return;
-        }
-
-        streak = 0;
-        skip--;
+    document.getElementById("skip-button").onclick = function (event) {
+        streak = skip = 0;
+        this.disabled = true;
 
         displayGameInfo();
         game();
         return;
-    }
-
-    document.getElementById("skip-button").onclick = function (event) {
-        skipButton();
     }
 
     /* It's adding an event listener to the input field. */

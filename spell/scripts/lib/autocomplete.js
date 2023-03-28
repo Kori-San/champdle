@@ -20,7 +20,7 @@ export function autocomplete(input, list) {
                 suggestion.innerHTML = "<div><img src=\"" + element[0] + "\"></div>";
                 suggestion.innerHTML += "<div><b>" + element[1].substr(0, value.length) + "</b>" + element[1].substr(value.length) + "</div>";
 
-                suggestion.setAttribute("class", "suggestion");
+                suggestion.className = "suggestion league-font";
 
                 suggestion.addEventListener('click', function () {
                     input.value = element[1];

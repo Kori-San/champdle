@@ -1,0 +1,107 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)),
+        url(/images/background.jpg) no-repeat 50% fixed;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: Fritz;
+    src: url("/font/FrizQuadrataTT.ttf");
+}
+
+@font-face {
+    font-family: Rubik;
+    src: url("/font/Rubik.ttf"), format(sans-serif);
+}
+
+.logo {
+    /* Centering the elements in the div. */
+    display: flex;
+    justify-content: center;
+
+    /* Setting the height of the logo to 200px, and the margin-top and margin-bottom to 25px and 75px
+respectively. */
+    height: 150px;
+    margin-top: 25px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.league-font {
+    /* It's centering the text. */
+    text-align: center;
+
+    /* It's setting the color of the text. */
+    color: #cdbe91;
+
+    /* It's setting the font of the text to Fritz. */
+    font-family: 'Fritz';
+    font-variant: small-caps;
+    font-size: large;
+}
+
+.league-box {
+    background: #1e2328;
+    box-shadow: inset 0 0 2px #000000;
+    border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
+    border-image-slice: 1;
+    border-width: 3px;
+    border-style: dashed;
+
+    /* It's adding padding to the element. */
+    padding: 10px;
+}
+
+.league-button {
+    background: #1e2328;
+    box-shadow: inset 0 0 2px #000000;
+    border-image: linear-gradient(to bottom, #0df6fc, #0a9bc4);
+    border-image-slice: 1;
+    border-width: 3px;
+    border-style: dashed;
+
+    /* It's adding padding to the element. */
+    padding: 10px;
+
+    /* It's making the transition smoother. */
+    transition: all 0.3ms ease-out;
+}
+
+.league-button:hover {
+    cursor: pointer;
+    box-shadow: 0 5px 10px #076571;
+    transition: all 0.3ms ease-out;
+}
+
+.league-button:disabled {
+    background: #1e2328;
+    box-shadow: inset 0 0 2px #000000;
+    border-image: linear-gradient(to bottom, #fa051d, #802525);
+    border-image-slice: 1;
+    border-width: 3px;
+    border-style: dashed;
+
+    /* It's adding padding to the element. */
+    padding: 10px;
+
+    transition: all 0.3ms ease-out;
+}
+
+.league-button:disabled:hover {
+    cursor: not-allowed;
+    box-shadow: 0 5px 10px #48070a;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #cdbe91;
+    text-decoration: none;
+}

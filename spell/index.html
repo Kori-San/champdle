@@ -7,24 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Champdle</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/css/background.css">
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <script async type="module" src="scripts/index.js"></script>
 
-    <div class="title">
+    <a href="/" class="logo">
+        <img src="/images/logo.png">
+    </a>
+
+    <div class="league-font title">
         <h1>Guess the Champion with a Spell description</h1>
     </div>
     <div class="game">
         <div class="ability">
             <div class="league-box">
-                <p class="description" id="description">
+                <p class="league-font description" id="description">
                     The ability will appear here.
                 </p>
                 <div class="countdown">
@@ -34,9 +34,9 @@
             </div>
             <div class="guess-box">
                 <div class="autocomplete">
-                    <input type="text" name="guess" class="league-box guess" id="guess" placeholder="Champion">
+                    <input type="text" name="guess" class="league-font league-box guess" id="guess" placeholder="Champion">
                 </div>
-                <button class="league-button submit" id="submit">></button>
+                <button class="league-font league-button submit" id="submit">></button>
             </div>
         </div>
         <div class="informations">
