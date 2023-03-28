@@ -1,0 +1,3 @@
+- Mediaquery
+- Proper Title styling
+- Visual Feedbacks
