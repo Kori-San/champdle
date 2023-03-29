@@ -1,4 +1,4 @@
-import { pushIfNotPresent, clearSurnames as cleanSurnames } from "./utilities.js";
+import { pushIfNotPresent, cleanSurnames } from "./utilities.js";
 
 /**
  * It's getting the latest version of the game from the API

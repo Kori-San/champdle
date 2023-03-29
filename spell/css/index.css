@@ -7,11 +7,6 @@
     gap: 25px;
 }
 
-.submit {
-    /* It's adding a margin of 15px to the element. */
-    margin: 15px;
-}
-
 .ability {
     /* It's setting the element to be a flexbox and it's centering the content of the element. */
     display: flex;
@@ -101,10 +96,6 @@
     /*when hovering an item:*/
     transition: all 0.3ms ease-in;
     background-color: #00434f;
-}
-
-.guess-box {
-    display: block ruby;
 }
 
 .guess {

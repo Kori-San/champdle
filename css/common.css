@@ -6,13 +6,13 @@ body {
 }
 
 @font-face {
-    font-family: Fritz;
-    src: url("/font/FrizQuadrataTT.ttf");
+    font-family: Friz;
+    src: url("/font/FrizQuadrataTT.woff"), format(sans-serif);
 }
 
 @font-face {
     font-family: Rubik;
-    src: url("/font/Rubik.ttf"), format(sans-serif);
+    src: url("/font/Rubik.woff"), format(sans-serif);
 }
 
 .logo {
@@ -39,8 +39,8 @@ respectively. */
     /* It's setting the color of the text. */
     color: #cdbe91;
 
-    /* It's setting the font of the text to Fritz. */
-    font-family: 'Fritz';
+    /* It's setting the font of the text to Friz. */
+    font-family: 'Friz', sans-serif;
     font-variant: small-caps;
     font-size: large;
 }

@@ -23,7 +23,7 @@ export function pushIfNotPresent(array, element) {
  * Returns:
  *   Nothing.
  */
-export function clearSurnames(array) {
+export function cleanSurnames(array) {
     for (const element of array) {
         if (element.length === 1) {
             const index = array.indexOf(element);
