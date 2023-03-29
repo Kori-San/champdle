@@ -76,6 +76,8 @@
     cursor: pointer;
     background-color: #1e2328;
 
+    /* It's setting the element to be a flexbox and it's centering the content of the element. It's adding
+    a gap of 15px to the element and it's centering the text. */
     display: flex;
     flex-direction: row;
     column-gap: 15px;
@@ -85,6 +87,8 @@
 }
 
 .suggestion img {
+    /* It's setting the width and height of the image to 30px, it's centering the image and it's adding a
+    padding of 5px to the left and right of the image. */
     width: 30px;
     height: 30px;
     margin: auto;
@@ -99,10 +103,13 @@
 }
 
 .guess {
+    /* It's setting the width of the element to 100%. */
     width: 100%;
 }
 
 .countdown {
+    /* It's setting the element to be a flexbox and it's centering the content of the element. It's adding
+    a gap of 5px to the element and it's adding a margin of 25px to the top of the element. */
     display: flex;
     justify-content: center;
     gap: 5px;
@@ -110,6 +117,8 @@
 }
 
 .countdown img {
+    /* It's setting the width and height of the image to 15px and it's adding a padding of 5px to the left
+    of the image. */
     padding-left: 5px;
     width: 15px;
     height: 15px;
@@ -150,11 +159,15 @@
 }
 
 .timer {
+    /* It's centering the element. */
     display: flex;
     justify-content: center;
     margin: auto;
 
+    /* It's creating a gradient background. */
     background: linear-gradient(#33d9b2 0%, #218c74 100%);
+
+    /* It's setting the height of the element to 5px and it's setting the width of the element to 100%. */
     height: 5px;
     width: 100%;
 }
