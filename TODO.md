@@ -1,6 +1,6 @@
 # P1
 - Select language (store it ?)
-
+- Restart button
 
 ## P2
 - Animate the whole thing

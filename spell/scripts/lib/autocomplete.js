@@ -9,7 +9,7 @@ import { cleanSurnames, pushIfNotPresent } from "./utilities.js";
  * champion.
  */
 export function autocomplete(input, list) {
-    input.oninput =  function (event) {
+    input.oninput = function (event) {
         /* Closing the list of suggestions. */
         closeList();
 
@@ -36,6 +36,13 @@ export function autocomplete(input, list) {
 
             /* It removes the empty strings from the array. */
             cleanSurnames(surnames);
+
+            /* Creating an abbreviation for the champion's name. For example, if the champion's name is
+            "Miss Fortune", it will create an abbreviation for it, which is "MF". */
+            if (surnames.length === 2) {
+                const abbreviation = surnames[0][0] + surnames[1][0];
+                pushIfNotPresent(surnames, abbreviation);
+            }
 
             /* Adding the full name to the list of surnames. */
             pushIfNotPresent(surnames, name);
