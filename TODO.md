@@ -17,3 +17,4 @@
 - Mediaquery
 - Make people share score with twitter
 - Add Ko-fee, github and many other links
+- Already guessed list ?
