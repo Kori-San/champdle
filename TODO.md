@@ -11,7 +11,6 @@
 - Make score scales with streak
 
 ### P3
-- Submit first suggestion when pressing Enter
 - .htaccess
 
 #### P4
