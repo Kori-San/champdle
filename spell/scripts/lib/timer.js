@@ -1,10 +1,13 @@
 let intervalID;
 
-function timer() {
+function timer(combo) {
     const timer = document.getElementById("timer");
     const interval = 1;
 
-    const maxTime = 30;
+    const penality = combo > 5 ? 15 : 3 * combo;
+
+    const maxTime = 30 - penality;
+    console.log(penality, maxTime);
 
     const expirationTime = new Date();
     expirationTime.setSeconds(expirationTime.getSeconds() + maxTime);
@@ -40,6 +43,6 @@ function timer() {
     return;
 }
 
-export function resetTimer() {
-    timer();
+export function resetTimer(combo) {
+    timer(combo);
 }

@@ -14,6 +14,10 @@ const language = "fr_FR";
 /* It's getting the input field. */
 const guessInput = document.getElementById('guess');
 
+export function lose() {
+
+}
+
 export async function game() {
     /* It's getting the latest version of the game and using it to get the base endpoint. */
     const latestVersion = await getLatestVersion();
@@ -41,7 +45,7 @@ export async function game() {
     displayGameInfo();
 
     /* It's resetting the timer. */
-    resetTimer();
+    resetTimer(streak);
 
     /* It's adding an event listener to the input field. */
     autocomplete(guessInput, allChamp);
@@ -52,6 +56,11 @@ export async function game() {
     function checkGuess() {
         /* It's closing the list of suggestions. */
         closeList();
+
+        /* It's checking if the guess is empty. */
+        if (!guess) {
+            return;
+        }
 
         /* It's getting the value of the input field and converting it to lowercase. */
         const guess = guessInput.value.toLowerCase();
