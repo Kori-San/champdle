@@ -4,15 +4,22 @@ import { disableTimer, resetTimer } from "./timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "./autocomplete.js";
 
 // Gameplay vars
-/* Basic mechanic */
-let lives = 3;
-let skip = 1;
-let streak = 0;
-
-/* Score mechanic */
-let score = 0;
+/* Basic mechanic initValues */
+const initLives = 3;
+const initSkip = 1;
+const initStreak = 0;
+const initScore = 0;
 const gain = 100;
 const comboGain = gain / 2;
+const comboForHeal = 5;
+
+/* Basic mechanic */
+let lives = initLives;
+let skip = initSkip;
+let streak = initStreak;
+
+/* Score mechanic */
+let score = initScore;
 
 // Data vars
 let surnames = "";
@@ -50,7 +57,7 @@ export async function game() {
     surnames = data[1];
     champName = data[2];
 
-    if (streak % 5 == 0 && streak != 0) {
+    if (streak % comboForHeal == 0 && streak != 0) {
         lives++;
     }
 
@@ -144,6 +151,18 @@ export function lose(time) {
         disableAutocomplete(guessInput);
         disableGuess();
         document.getElementById("hourglass").hidden = true;
+        document.getElementById("retry").hidden = false;
+        document.getElementById("retry").onclick = () => {
+            document.getElementById("hourglass").hidden = false;
+            document.getElementById("submit").disabled = false;
+            document.getElementById("skip-button").disabled = false;
+            document.getElementById("retry").hidden = true;
+            lives = initLives;
+            skip = initSkip;
+            score = initScore;
+            game();
+            return;
+        }
 
         return;
     }
@@ -187,7 +206,7 @@ function checkGuess() {
         if (guess === surname.toLowerCase() && guess) {
             /* It's adding the score and the streak. */
             score += gain + (streak * comboGain)
-            streak += 1;
+            streak++;
 
             /* It's restarting the game. */
             game();

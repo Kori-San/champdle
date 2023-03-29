@@ -14,8 +14,7 @@ export function pushIfNotPresent(array, element) {
 
 
 /**
- * It takes an array of strings, and removes any strings that are either one character long, or equal
- * to "IV"
+ * It takes an array of strings, and removes any strings that are 2 character long or less
  * 
  * Args:
  *   array: an array of strings
@@ -25,13 +24,9 @@ export function pushIfNotPresent(array, element) {
  */
 export function cleanSurnames(array) {
     for (const element of array) {
-        if (element.length === 1) {
+        if (element.length <= 2) {
             const index = array.indexOf(element);
             array.splice(index, 1);
-        }
-        else if (element === "IV") {
-            const index = array.indexOf(element);
-            array.splice(index, 1); 
         }
     }
     return;

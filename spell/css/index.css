@@ -38,6 +38,14 @@
     padding: 20px;
 }
 
+.retry {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
 .autocomplete {
     /* It's setting the element to be a flexbox and it's centering the content of the element. */
     position: relative;

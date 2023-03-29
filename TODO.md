@@ -1,6 +1,7 @@
 # P1
 - Select language (store it ?)
 - Restart button
+- Restart timer when giving wrong answer ?
 
 ## P2
 - Animate the whole thing
