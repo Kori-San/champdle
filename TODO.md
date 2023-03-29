@@ -12,7 +12,6 @@
 
 ### P3
 - Submit first suggestion when pressing Enter
-- Make ID work for autocomplete
 - .htaccess
 
 #### P4
