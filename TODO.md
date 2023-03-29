@@ -9,7 +9,6 @@
 - Display score on lose
 
 ### P3
-- Make only the logo clickable and not the whole div
 - .htaccess
 
 #### P4

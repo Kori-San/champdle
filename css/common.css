@@ -15,11 +15,17 @@ body {
     src: url("/font/Rubik.woff"), format(sans-serif);
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .logo {
     /* Centering the elements in the div. */
     display: flex;
     justify-content: center;
-
+    width: 400px;
     /* Setting the height of the logo to 200px, and the margin-top and margin-bottom to 25px and 75px
 respectively. */
     height: 150px;
