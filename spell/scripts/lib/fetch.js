@@ -18,6 +18,16 @@ export async function getLatestVersion() {
     return data[0];
 }
 
+/**
+ * It's fetching the data from the API and getting the data from the response
+ * 
+ * Args:
+ *   url: The URL of the API.
+ *   imgURL: It's the URL of the champion's image.
+ * 
+ * Returns:
+ *   It's returning the list of champions.
+ */
 export async function getAllChamp(url, imgURL) {
     /* It's fetching the data from the API and getting the data from the response. */
     const response = await fetch(url + "champion.json");

@@ -9,7 +9,7 @@ import { cleanSurnames, pushIfNotPresent } from "./utilities.js";
  * champion.
  */
 export function autocomplete(input, list) {
-    input.addEventListener('input', function () {
+    input.oninput =  function (event) {
         /* Closing the list of suggestions. */
         closeList();
 
@@ -74,7 +74,7 @@ export function autocomplete(input, list) {
             }
         }
 
-    });
+    };
 }
 
 /**
@@ -85,4 +85,18 @@ export function closeList() {
     if (suggestions) {
         suggestions.parentNode.removeChild(suggestions);
     }
+}
+
+/**
+ * "Disable the autocomplete feature of the input element by setting its oninput event handler to
+ * null."
+ * 
+ * The oninput event handler is the event handler that is called when the user types something into the
+ * input element
+ * 
+ * Args:
+ *   input: The input element to disable autocomplete on.
+ */
+export function disableAutocomplete(input) {
+    input.oninput = null;
 }
