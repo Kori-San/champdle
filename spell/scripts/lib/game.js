@@ -54,6 +54,13 @@ export async function game() {
      * It's checking if the guess is correct
      */
     function checkGuess() {
+        /* It's getting the list of suggestions. */
+        const suggestionsDiv = document.getElementById("suggestions");
+
+        /* It's checking if the list of suggestions is open. If it is, it's getting the first
+        suggestion. If it isn't, it's getting the value of the input field. */
+        const guess = suggestionsDiv ? suggestionsDiv.firstChild.textContent.toLowerCase() : guessInput.value.toLowerCase();
+
         /* It's closing the list of suggestions. */
         closeList();
 
@@ -61,9 +68,6 @@ export async function game() {
         if (!guess) {
             return;
         }
-
-        /* It's getting the value of the input field and converting it to lowercase. */
-        const guess = guessInput.value.toLowerCase();
 
         /* It's clearing the input field. */
         clearInput(guessInput);

@@ -26,8 +26,8 @@ export function autocomplete(input, list) {
             for (const surname of surnames) {
                 if (surname.substr(0, value.length).toLowerCase() == value.toLowerCase()) {
                     const suggestion = document.createElement('div');
-                    suggestion.innerHTML = "<div><img src=\"" + element[0] + "\"></div>";
-                    suggestion.innerHTML += "<div>" + name + "</div>";
+                    suggestion.innerHTML = "<div id=\"suggestion-img\"><img src=\"" + element[0] + "\"></div>";
+                    suggestion.innerHTML += "<div id=\"suggestion-name\">" + name + "</div>";
 
                     suggestion.className = "suggestion league-font";
 

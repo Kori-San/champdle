@@ -7,7 +7,6 @@ function timer(combo) {
     const penality = combo > 5 ? 15 : 3 * combo;
 
     const maxTime = 30 - penality;
-    console.log(penality, maxTime);
 
     const expirationTime = new Date();
     expirationTime.setSeconds(expirationTime.getSeconds() + maxTime);
@@ -26,7 +25,6 @@ function timer(combo) {
         /* Checking if the timer is at 0% and if it is, it clears the interval. */
         if (Math.floor(diffSecond) < 0) {
             timer.style.width = "0%";
-            console.log("Done");
             window.clearInterval(intervalID);
         }
 
