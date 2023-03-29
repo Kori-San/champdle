@@ -1,5 +1,7 @@
 # P1
 - Select language (store it ?)
+- Get rid of magic elements (like magic numbers but for DOM elements)
+- REFACTOR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ## P2
 - Animate the whole thing
