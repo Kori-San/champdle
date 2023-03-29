@@ -14,6 +14,7 @@ const comboGain = gain / 2;
 const comboForHeal = 5;
 
 /* Basic mechanic */
+let failCombo = 0;
 let lives = initLives;
 let skip = initSkip;
 let streak = initStreak;
@@ -136,7 +137,7 @@ export function lose(time) {
     lives--;
 
     displayGameInfo();
-
+    resetTimer(++failCombo);
     if (lives === 0) {
         /* It's displaying the name of the champion. */
         document.getElementById("description").innerHTML = "<div><div>The answer was " + "<b>" + champName + "</b></div>Your score is: " + score + ".</div>";
@@ -207,7 +208,7 @@ function checkGuess() {
             /* It's adding the score and the streak. */
             score += gain + (streak * comboGain)
             streak++;
-
+            failCombo = 0;
             /* It's restarting the game. */
             game();
             return;
