@@ -2,13 +2,17 @@
 - Fix lose mechanic
 - Select language (store it ?)
 - Add Score
-- Make suggestion suggests 2 parts champions (ie. Willump -> Nunu & Willump, Yi -> Master Yi)
+- Add lives gain mechanic
 
 ## P2
+- Animate the whole thing
 - Visual Feedbacks
 - Display score on lose
+- Make score scales with streak
 
 ### P3
+- Submit first suggestion when pressing Enter
+- Make ID work for autocomplete
 - .htaccess
 
 #### P4

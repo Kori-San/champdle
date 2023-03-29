@@ -1,3 +1,5 @@
+import { cleanSurnames, pushIfNotPresent } from "./utilities.js";
+
 export function autocomplete(input, list) {
     input.addEventListener('input', function () {
         closeList();
@@ -14,24 +16,34 @@ export function autocomplete(input, list) {
         this.parentNode.appendChild(suggestions);
 
         for (const element of list) {
-            if (element[1].substr(0, value.length).toLowerCase() == value.toLowerCase()) {
 
-                const suggestion = document.createElement('div');
-                suggestion.innerHTML = "<div><img src=\"" + element[0] + "\"></div>";
-                suggestion.innerHTML += "<div><b>" + element[1].substr(0, value.length) + "</b>" + element[1].substr(value.length) + "</div>";
+            const name = element[1];
 
-                suggestion.className = "suggestion league-font";
+            const surnames = name.split(' ');
+            cleanSurnames(surnames);
+            pushIfNotPresent(surnames, name);
 
-                suggestion.addEventListener('click', function () {
-                    input.value = element[1];
-                    closeList();
-                });
+            for (const surname of surnames) {
+                if (surname.substr(0, value.length).toLowerCase() == value.toLowerCase()) {
+                    const suggestion = document.createElement('div');
+                    suggestion.innerHTML = "<div><img src=\"" + element[0] + "\"></div>";
+                    suggestion.innerHTML += "<div>" + name + "</div>";
 
-                suggestion.style.cursor = 'pointer';
+                    suggestion.className = "suggestion league-font";
 
-                suggestions.appendChild(suggestion);
+                    suggestion.addEventListener('click', function () {
+                        input.value = name;
+                        closeList();
+                    });
+
+                    suggestion.style.cursor = 'pointer';
+
+                    suggestions.appendChild(suggestion);
+                    break;
+                }
             }
         }
+
     });
 }
 
