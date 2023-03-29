@@ -15,6 +15,5 @@
 
 ##### P5
 - Mediaquery
-- Timer logo
 - Make people share score with twitter
 - Add Ko-fee, github and many other links

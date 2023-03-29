@@ -105,7 +105,14 @@
 .countdown {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
+    margin-top: 25px;
+}
+
+.countdown img {
+    padding-left: 5px;
+    width: 15px;
+    height: 15px;
 }
 
 .informations {
@@ -150,5 +157,4 @@
     background: linear-gradient(#33d9b2 0%, #218c74 100%);
     height: 5px;
     width: 100%;
-    margin-top: 25px;
 }
