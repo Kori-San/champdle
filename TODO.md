@@ -2,7 +2,7 @@
 - Fix lose mechanic
 - Select language (store it ?)
 - Add Score
-- Make suggestion suggests 2 parts champions (ie. Willump -> Nunu)
+- Make suggestion suggests 2 parts champions (ie. Willump -> Nunu & Willump, Yi -> Master Yi)
 
 ## P2
 - Visual Feedbacks
