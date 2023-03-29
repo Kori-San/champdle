@@ -143,6 +143,7 @@ export function lose(time) {
         closeList();
         disableAutocomplete(guessInput);
         disableGuess();
+        document.getElementById("hourglass").hidden = true;
 
         return;
     }
