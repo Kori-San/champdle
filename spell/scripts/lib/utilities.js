@@ -27,7 +27,7 @@ export function pushIfNotPresent(array, element) {
  */
 export function cleanSurnames(array) {
     for (const element of array) {
-        if (element.length <= 2) {
+        if (element.length <= 1 || element === "IV") {
             const index = array.indexOf(element);
             array.splice(index, 1);
         }
@@ -68,4 +68,5 @@ export function shakeScreen(element, seconds) {
     setTimeout(() => {
         element.classList.remove("quake");
     }, seconds * 1000);
+    return;
 }

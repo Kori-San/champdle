@@ -20,7 +20,7 @@
     overflow: auto;
     margin: auto;
     padding: 20px;
-    padding-bottom: 0px;
+    padding-bottom: 5px;
 }
 
 .submit-button {
@@ -47,6 +47,7 @@
     display: flex;
     justify-content: center;
     margin: auto;
+    margin-bottom: -20px;
 }
 
 .retry button {
@@ -107,7 +108,7 @@
     display: flex;
     justify-content: center;
     gap: 5px;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .countdown img {

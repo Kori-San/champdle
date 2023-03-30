@@ -38,9 +38,14 @@ export function autocomplete(input, list) {
             const surnames = name.split(' ');
             cleanSurnames(surnames);
 
-            /* Creating an abbreviation for the champion's name. For example, "Miss Fortune" will be "MF". */
-            if (surnames.length === 2) {
-                const abbreviation = surnames[0][0] + surnames[1][0];
+            if (surnames.length > 1) {
+                let abbreviation = "";
+
+                /* Creating an abbreviation for the champion's name. For example, "Miss Fortune" will be "MF". */
+                for (const namePart of name.split(' ')) {
+                    abbreviation += namePart[0];
+                }
+    
                 pushIfNotPresent(surnames, abbreviation);
             }
 

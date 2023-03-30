@@ -1,5 +1,5 @@
 .gamemodes {
-    margin-top: 100px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -9,6 +9,6 @@
 .gamemodes 
 .league-button,
 .league-button-disabled {
-    margin: 25px;
-    width: 30%;
+    margin: 15px;
+    width: 25%;
 }
