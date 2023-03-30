@@ -1,6 +1,5 @@
 # P1
 - Select language (store it ?)
-- Add passives
 
 ## P2
 - Animate the whole thing
