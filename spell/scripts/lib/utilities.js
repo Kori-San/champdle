@@ -48,3 +48,24 @@ export function clearInput(element) {
     element.value = "";
     return;
 }
+
+/**
+ * It's shaking the screen for 'quakeTime' seconds
+ * 
+ * Args:
+ *   element: The element that you want to shake.
+ *   seconds: The number of seconds to shake the screen.
+ * 
+ * Returns:
+ *   Nothing.
+ */
+export function shakeScreen(element, seconds) {
+    /* It's removing the class 'quake' from the element. */
+    element.classList.remove("quake");
+
+    /* It's shaking the screen for 'quakeTime' seconds. */
+    element.classList.add("quake");
+    setTimeout(() => {
+        element.classList.remove("quake");
+    }, seconds * 1000);
+}

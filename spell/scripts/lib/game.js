@@ -1,5 +1,5 @@
 import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "./fetch.js";
-import { clearInput } from "./utilities.js";
+import { clearInput, shakeScreen } from "./utilities.js";
 import { disableTimer, resetTimer } from "./timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "./autocomplete.js";
 
@@ -16,6 +16,7 @@ const initFailCombo = 0;
 const gain = 100;
 const comboGain = gain / 2;
 const comboForHeal = 5;
+const quakeTime = 0.5; // In seconds
 
 /* Basic mechanic */
 let failCombo = initFailCombo;
@@ -117,6 +118,8 @@ function displayGameInfo() {
  *   Nothing.
  */
 export function lose() {
+    shakeScreen(abilityDescription, quakeTime);
+
     /* It's decreasing the lives by 1 and resetting the streak to its initial value. */
     streak = initStreak;
     lives--;
