@@ -10,7 +10,6 @@
 
 #### P4
 - Scoreboard ?
-- Have a proper submit button
 
 ##### P5
 - Mediaquery

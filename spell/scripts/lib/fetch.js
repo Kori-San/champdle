@@ -102,7 +102,6 @@ export async function getRandomAbilty(url) {
 
     /* It's adding the description of the passive to the list of spells. */
     spells.push(data.data[champId].passive.description);
-    console.log(spells);
 
     /* Getting a random number between 0 and the length of the champList. */
     const randomIndex = Math.floor(Math.random() * spells.length);
