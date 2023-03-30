@@ -44,11 +44,18 @@ export function autocomplete(input, list) {
                 pushIfNotPresent(surnames, abbreviation);
             }
 
-            /* Adding the full name to the list of surnames. */
-            pushIfNotPresent(surnames, name);
+            /* Creating an array with both possible names. Normalized name have the diacritics removed from the champion's name.
+            For example, "Séraphine" will be "Seraphine" and the array will be ["Séraphine", "Seraphine"] */
+            const possibleNames = [name, name.normalize("NFD").replace(/\p{Diacritic}/gu, "")];
 
-            /* Removing the apostrophe from the name. (Kai'Sa, K'Sante, etc...) */
-            pushIfNotPresent(surnames, name.replace("'", ""));
+            /* Normalize is removing the diacritics from the champion's name. For example, "Séraphine" will be "Seraphine". */
+            for (const possibleName of possibleNames) {
+                /* Adding the full name and full normalized name to the list of surnames. */
+                pushIfNotPresent(surnames, possibleName);
+
+                /* Removing the apostrophe from the name. (Kai'Sa, K'Sante, etc...) */
+                pushIfNotPresent(surnames, possibleName.replace("'", ""));
+            }
 
             for (const surname of surnames) {
                 /* Checking if the surname starts with the value that the user has typed into the input element. */
