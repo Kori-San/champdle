@@ -36,18 +36,18 @@
 .submit-button img {
     width: 30px;
     height: 30px;
-    filter:drop-shadow(0px 0px 10px #0a9bc4);
+    filter: drop-shadow(0px 0px 10px #0a9bc4);
 }
 
 .submit-button:disabled img {
-    filter:drop-shadow(0px 0px 10px #802525);
+    filter: drop-shadow(0px 0px 10px #802525);
 }
 
 .retry {
     display: flex;
     justify-content: center;
     margin: auto;
-    margin-bottom: -20px;
+    margin-top: 15px;
 }
 
 .retry button {
@@ -108,7 +108,7 @@
     display: flex;
     justify-content: center;
     gap: 5px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .countdown img {

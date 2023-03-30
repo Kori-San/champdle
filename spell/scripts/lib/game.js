@@ -51,7 +51,6 @@ const guessInput = document.getElementById('guess');
 /* Image */
 const hourglass = document.getElementById("hourglass");
 
-
 /**
  * It's getting the latest version of the game, the base endpoint, the image endpoint, the data from
  * the API, and assigning the data from the API to the variables.
@@ -103,7 +102,7 @@ export async function game() {
  */
 function displayGameInfo() {
     /* Either displays the ability or the champion name and the score, depending on the lives of the player */
-    abilityDescription.innerHTML = lives > 0 ? randomAbility : "<p>The answer was <b>" + champName + "</b></p><p>Your score is: " + score + ".<p>";
+    abilityDescription.innerHTML = lives > 0 ? randomAbility : "<div>The answer was <b>" + champName + "</b><br>Your score is: " + score + ".</div>";
     livesStat.innerHTML = lives;
     skipStat.innerHTML = skip;
     streakStat.innerHTML = streak;
