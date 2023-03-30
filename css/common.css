@@ -22,12 +22,9 @@ body {
 }
 
 .logo {
-    /* Centering the elements in the div. */
     display: flex;
     justify-content: center;
     width: 400px;
-    /* Setting the height of the logo to 200px, and the margin-top and margin-bottom to 25px and 75px
-respectively. */
     height: 150px;
     margin-top: 25px;
 }
@@ -39,13 +36,8 @@ respectively. */
 }
 
 .league-font {
-    /* It's centering the text. */
     text-align: center;
-
-    /* It's setting the color of the text. */
     color: #cdbe91;
-
-    /* It's setting the font of the text to Friz. */
     font-family: 'Friz', sans-serif;
     font-variant: small-caps;
     font-size: large;
@@ -58,8 +50,6 @@ respectively. */
     border-image-slice: 1;
     border-width: 3px;
     border-style: dashed;
-
-    /* It's adding padding to the element. */
     padding: 10px;
 }
 
@@ -70,11 +60,7 @@ respectively. */
     border-image-slice: 1;
     border-width: 3px;
     border-style: dashed;
-
-    /* It's adding padding to the element. */
     padding: 10px;
-
-    /* It's making the transition smoother. */
     transition: all 0.3ms ease-out;
 }
 
@@ -91,14 +77,27 @@ respectively. */
     border-image-slice: 1;
     border-width: 3px;
     border-style: dashed;
-
-    /* It's adding padding to the element. */
     padding: 10px;
-
     transition: all 0.3ms ease-out;
 }
 
 .league-button:disabled:hover {
+    cursor: not-allowed;
+    box-shadow: 0 5px 10px #48070a;
+}
+
+.league-button-disabled {
+    background: #1e2328;
+    box-shadow: inset 0 0 2px #000000;
+    border-image: linear-gradient(to bottom, #fa051d, #802525);
+    border-image-slice: 1;
+    border-width: 3px;
+    border-style: dashed;
+    padding: 10px;
+    transition: all 0.3ms ease-out;
+}
+
+.league-button-disabled:hover {
     cursor: not-allowed;
     box-shadow: 0 5px 10px #48070a;
 }

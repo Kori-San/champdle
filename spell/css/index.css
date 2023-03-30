@@ -1,20 +1,13 @@
 .game {
-    /* It's setting the element to be a flexbox and it's centering the content of the element. */
     display: flex;
     justify-content: center;
-
-    /* It's adding a gap of 25px between each element. */
     gap: 25px;
 }
 
 .ability {
-    /* It's setting the element to be a flexbox and it's centering the content of the element. */
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-    /* It's setting the width of the element to 25%, it's adding a padding of 25px to the element, it's
-    adding a gap of 15px to the element and it's adding a padding of 5% to the element. */
     width: 25%;
     padding: 25px;
     gap: 15px;
@@ -22,70 +15,48 @@
 }
 
 .description {
-    /* It's adding a space of 1.5px between each letter. */
     letter-spacing: 1.5px;
-
-    /* It's setting the maximum height of the element to 100px. */
     max-height: 100px;
-
-    /* It's allowing the text to wrap anywhere. */
     overflow: auto;
-
-    /* It's centering the element. */
     margin: auto;
-
-    /* It's adding a padding of 20px to the element. */
     padding: 20px;
+    padding-bottom: 0px;
 }
 
 .retry {
     display: flex;
     justify-content: center;
     margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
+}
+
+.retry button {
+    width: 50%;
 }
 
 .autocomplete {
-    /* It's setting the element to be a flexbox and it's centering the content of the element. */
     position: relative;
     display: flex;
     justify-content: center;
-
-    /* It's centering the element, it's setting the width of the element to 100% and it's adding a gap of
-    15px to the element. */
     margin: auto;
     width: 100%;
     gap: 15px;
 }
 
 .autocomplete-items {
-    /* It's removing the border of the element. */
     position: absolute;
     border-bottom: none;
     border-top: none;
-
-    /* It's setting the z-index of the element to 99. */
     z-index: 99;
-
-    /* It's setting the top of the element to 100% and it's setting the width of the element to 100%. */
     top: 100%;
     width: 100%;
-
-    /* It's setting the height of the element to 200px and it's allowing the element to scroll. */
     height: 200px;
     overflow: auto;
 }
 
 .suggestion {
-    /* It's adding a padding of 10px to the element, it's changing the cursor to a pointer when hovering
-    the element and it's changing the background color of the element. */
     padding: 10px;
     cursor: pointer;
     background-color: #1e2328;
-
-    /* It's setting the element to be a flexbox and it's centering the content of the element. It's adding
-    a gap of 15px to the element and it's centering the text. */
     display: flex;
     flex-direction: row;
     column-gap: 15px;
@@ -95,29 +66,24 @@
 }
 
 .suggestion img {
-    /* It's setting the width and height of the image to 30px, it's centering the image and it's adding a
-    padding of 5px to the left and right of the image. */
     width: 30px;
     height: 30px;
     margin: auto;
     padding-right: 5px;
     padding-left: 5px;
+    cursor: pointer;
 }
 
 .autocomplete-items div:hover {
-    /*when hovering an item:*/
     transition: all 0.3ms ease-in;
     background-color: #00434f;
 }
 
 .guess {
-    /* It's setting the width of the element to 100%. */
     width: 100%;
 }
 
 .countdown {
-    /* It's setting the element to be a flexbox and it's centering the content of the element. It's adding
-    a gap of 5px to the element and it's adding a margin of 25px to the top of the element. */
     display: flex;
     justify-content: center;
     gap: 5px;
@@ -125,15 +91,12 @@
 }
 
 .countdown img {
-    /* It's setting the width and height of the image to 15px and it's adding a padding of 5px to the left
-    of the image. */
     padding-left: 5px;
     width: 15px;
     height: 15px;
 }
 
 .informations {
-    /* It's setting the element to be a flexbox and it's centering the content of the element. */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -141,24 +104,17 @@
 }
 
 .stat {
-    /* It's setting the element to be a flexbox and it's centering the content of the element. */
     display: flex;
     justify-content: center;
     gap: 5px;
-
-    /* It's centering the text. */
     text-align: center;
-
-    /* It's setting the color of the text. */
     color: #cdbe91;
-    /* It's setting the font of the text to Rubik. */
     font-family: 'Rubik', sans-serif;
     font-weight: lighter;
     font-variant: small-caps;
 }
 
 .stat-description img {
-    /* It's centering the image. */
     margin: auto;
     padding-right: 5px;
     padding-left: 5px;
@@ -167,15 +123,10 @@
 }
 
 .timer {
-    /* It's centering the element. */
     display: flex;
     justify-content: center;
     margin: auto;
-
-    /* It's creating a gradient background. */
     background: linear-gradient(#33d9b2 0%, #218c74 100%);
-
-    /* It's setting the height of the element to 5px and it's setting the width of the element to 100%. */
     height: 5px;
     width: 100%;
 }

@@ -1,12 +1,14 @@
 .gamemodes {
-    /* Centering the elements in the div. */
     margin-top: 100px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.gamemodes .league-button {
-    /* Adding padding to the left and right of the button. */
-    padding-left: 10%;
-    padding-right: 10%;
+.gamemodes 
+.league-button,
+.league-button-disabled {
+    margin: 25px;
+    width: 30%;
 }

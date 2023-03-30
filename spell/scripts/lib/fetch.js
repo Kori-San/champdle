@@ -7,11 +7,11 @@ import { pushIfNotPresent, cleanSurnames } from "./utilities.js";
  *   The first element of the data array.
  */
 export async function getLatestVersion() {
+    /* URL which lists all the versions. */
     const url = "https://ddragon.leagueoflegends.com/api/versions.json";
 
     /* It's fetching the data from the API. */
     const response = await fetch(url);
-    /* It's getting the data from the response. */
     const data = await response.json();
 
     /* It's returning the first element of the data array. */
@@ -35,7 +35,7 @@ export async function getAllChamp(url, imgURL) {
 
     /* Getting the list of champions from the data. */
     const champList = [];
-    
+
     for (const key in data.data) {
         champList.push([imgURL + data.data[key].id + ".png", data.data[key].name]);
     }
@@ -116,8 +116,8 @@ export async function getRandomAbilty(url) {
 
     cleanSurnames(surnames);
 
+    /* It's replacing the surname with ???. */
     for (const surname of surnames) {
-        /* It's replacing the surname with ???. */
         randomAbility = randomAbility.replaceAll(surname, "???");
     }
 

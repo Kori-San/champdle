@@ -1,15 +1,16 @@
 import { lose } from "./game.js";
 
-/* Setting the `timerElement` variable to the element with the id `timer` and setting the `intervalID`
-variable to `undefined`. */
-const timerElement = document.getElementById("timer");
-let intervalID;
+/* Declaring the variable `intervalID` and setting it to `undefined`. */
+let intervalID; // ID of the window.setInterval worker
 
-/* Setting the variables that will be used in the `timer` function. */
-const interval = 1; // 1 millisecondes
-const initTime = 30;
-const maxComboForPenality = 5;
-const penalityPerCombo = 3;
+/* Setting the variables that will be used in the timer function. */
+const interval = 1; // Interval for refreshing the timer in milliseconds.
+const initTime = 30; // Time at start (in seconds).
+const maxComboForPenality = 5; // Maximum combo streak for full penality.
+const penalityPerCombo = 3; // Seconds that are taken out per combo point.
+
+/* Setting the `timerElement` variable to the element with the id `timer`. */
+const timerElement = document.getElementById("timer");
 
 /**
  * It sets the width of the timer bar to the percentage of time left
@@ -21,8 +22,7 @@ const penalityPerCombo = 3;
  *   Nothing.
  */
 function timer(combo) {
-    /* Checking if the combo is greater than 5. If it is, it will set the penality to 15. If it is not, it
-    will set the penality to 3 times the combo. */
+    /* Calculate the number of seconds to be deducted in function of the combo streak */
     const penality = combo > maxComboForPenality ? maxComboForPenality * penalityPerCombo : penalityPerCombo * combo;
 
     /* Calculating the maximum time the player has to answer the question. */
@@ -51,7 +51,7 @@ function timer(combo) {
         if (Math.floor(diffSecond) < 0) {
             timerElement.style.width = "0%";
             window.clearInterval(intervalID);
-            lose(true);
+            lose();
             return;
         }
 
@@ -81,6 +81,7 @@ function timer(combo) {
  */
 export function resetTimer(combo) {
     timer(combo);
+    return;
 }
 
 /**

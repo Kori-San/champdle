@@ -4,6 +4,9 @@
  * Args:
  *   array: The array to push the element to.
  *   element: The element to add to the array.
+ * 
+ * Returns:
+ *   Nothing.
  */
 export function pushIfNotPresent(array, element) {
     if (array.indexOf(element) === -1) {
@@ -37,6 +40,9 @@ export function cleanSurnames(array) {
  * 
  * Args:
  *   element: The element to clear.
+ * 
+ * Returns:
+ *   Nothing.
  */
 export function clearInput(element) {
     element.value = "";

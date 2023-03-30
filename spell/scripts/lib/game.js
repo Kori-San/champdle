@@ -3,18 +3,22 @@ import { clearInput } from "./utilities.js";
 import { disableTimer, resetTimer } from "./timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "./autocomplete.js";
 
+/* User preference */
+let language = "fr_FR";
+
 // Gameplay vars
 /* Basic mechanic initValues */
 const initLives = 3;
 const initSkip = 1;
 const initStreak = 0;
 const initScore = 0;
+const initFailCombo = 0;
 const gain = 100;
 const comboGain = gain / 2;
 const comboForHeal = 5;
 
 /* Basic mechanic */
-let failCombo = 0;
+let failCombo = initFailCombo;
 let lives = initLives;
 let skip = initSkip;
 let streak = initStreak;
@@ -23,210 +27,212 @@ let streak = initStreak;
 let score = initScore;
 
 // Data vars
+/* DDragon's vars */
 let surnames = "";
 let randomAbility = "";
 let champName = "";
-const language = "fr_FR";
 
 // DOM vars
+/* Buttons */
+const skipButton = document.getElementById("skip-button");
+const submitButton = document.getElementById("submit");
+const retryButton = document.getElementById("retry");
+
+/* Texts */
+const abilityDescription = document.getElementById("description");
+const livesStat = document.getElementById("lives");
+const skipStat = document.getElementById("skip");
+const streakStat = document.getElementById("streak");
+
+/* Input */
 const guessInput = document.getElementById('guess');
 
+/* Image */
+const hourglass = document.getElementById("hourglass");
+
+
 /**
- * It's getting the latest version of the game, getting the base endpoint, getting the URL of a random
- * champion, getting the data of the champion, getting the name of the ability, the surnames of the
- * champion and the name of the champion, setting the scroll of the description to the top and
- * displaying the game info, resetting the timer, adding an event listener to the input field,
- * disabling the skip button and restarting the game, adding an event listener to the input field,
- * adding an event listener to the button and checking the guess.
+ * It's getting the latest version of the game, the base endpoint, the image endpoint, the data from
+ * the API, and assigning the data from the API to the variables.
+ * 
+ * It's also checking if the streak is a multiple of 5 and if it is, it's increasing the lives by 1.
+ * 
+ * It's displaying the ability description, the number of lives, the number of skips, and the current streak
  * 
  * Returns:
  *   Nothing.
  */
 export async function game() {
-    /* It's getting the latest version of the game and using it to get the base endpoint. */
+    /* It's getting the latest version of the game and the base endpoint and the image endpoint. */
     const latestVersion = await getLatestVersion();
     const baseEndpoint = "https://ddragon.leagueoflegends.com/cdn/" + latestVersion + "/data/" + language + "/";
     const imgEndpoint = "http://ddragon.leagueoflegends.com/cdn/" + latestVersion + "/img/champion/";
 
-    /* It's getting the URL of a random champion and getting the data of the champion. */
+    /* It's getting the data from the API. */
     const allChamp = await getAllChamp(baseEndpoint, imgEndpoint);
     const randomChampURL = await getRandomChampURL(baseEndpoint);
     const data = await getRandomAbilty(randomChampURL);
 
-    /* It's getting the name of the ability, the surnames of the champion and the name of the champion. */
+    /* It's assigning the data from the API to the variables. */
     randomAbility = data[0];
     surnames = data[1];
     champName = data[2];
 
-    if (streak % comboForHeal == 0 && streak != 0) {
+    /* It's checking if the streak is a multiple of 5 and if it's not the initial streak. If it is, it's
+    increasing the lives by 1. */
+    if (streak % comboForHeal == 0 && streak != initStreak) {
         lives++;
     }
 
-    /* It's setting the scroll of the description to the top and displaying the game info. */
-    document.getElementById("description").scrollTop = 0;
+    /* It's displaying the ability description, the number of lives, the number of skips, and the current
+     * streak. */
+    abilityDescription.scrollTop = 0;
     displayGameInfo();
-
-    /* It's resetting the timer. */
     resetTimer(streak);
-
-    /* It's adding an event listener to the input field. */
     autocomplete(guessInput, allChamp);
-
-    /* It's adding an event listener to the skip button. */
-    document.getElementById("skip-button").onclick = function (event) {
-        /* It's decreasing the number of skips by 1 and resetting the streak to 0. */
-        streak = 0;
-        skip--;
-
-        /* It's disabling the skip button if the player has no more skips left. */
-        if (skip === 0) {
-            this.disabled = true;
-        }
-
-        /* It's restarting the game. */
-        displayGameInfo();
-        game();
-        return;
-    }
-
-    /* It's adding an event listener to the input field. */
-    guessInput.onkeydown = function (event) {
-        /* It's checking if the key pressed is the enter key. */
-        if (event.key === "Enter") {
-            /* It's preventing the default action of the event. */
-            event.preventDefault();
-            checkGuess();
-        }
-    }
-
-    /* It's adding an event listener to the button. */
-    document.getElementById("submit").onclick = function (event) {
-        checkGuess();
-    }
+    return;
 }
 
 /**
- * It displays the game information on the screen
+ * It displays the ability description, the number of lives, the number of skips, and the current
+ * streak.
  * 
  * Returns:
  *   Nothing.
  */
 function displayGameInfo() {
-    document.getElementById("description").innerHTML = randomAbility;
-    document.getElementById("lives").innerHTML = lives;
-    document.getElementById("skip").innerHTML = skip;
-    document.getElementById("streak").innerHTML = streak;
-}
-
-/**
- * It's displaying the name of the champion, disabling the timer, the submit button and the skip
- * button, removing the event listeners from the input field and the timer, and restarting the game if
- * the player has no lives left
- * 
- * Args:
- *   time: It's a boolean value. It's true if the player has lost because the timer has run out.
- * 
- * Returns:
- *   Nothing.
- */
-export function lose(time) {
-    /* It's resetting the streak to 0. */
-    streak = 0;
-
-    /* It's checking if the player has no lives left. */
-    lives--;
-
-    displayGameInfo();
-    resetTimer(++failCombo);
-    if (lives === 0) {
-        /* It's displaying the name of the champion. */
-        document.getElementById("description").innerHTML = "<div><div>The answer was " + "<b>" + champName + "</b></div>Your score is: " + score + ".</div>";
-
-        /* It's disabling the timer, the submit button and the skip button. */
-        disableTimer();
-        document.getElementById("submit").disabled = true;
-        document.getElementById("skip-button").disabled = true;
-
-        /* It's removing the event listeners from the input field and the timer. */
-        closeList();
-        disableAutocomplete(guessInput);
-        disableGuess();
-        document.getElementById("hourglass").hidden = true;
-        document.getElementById("retry").hidden = false;
-        document.getElementById("retry").onclick = () => {
-            document.getElementById("hourglass").hidden = false;
-            document.getElementById("submit").disabled = false;
-            document.getElementById("skip-button").disabled = false;
-            document.getElementById("retry").hidden = true;
-            lives = initLives;
-            skip = initSkip;
-            score = initScore;
-            game();
-            return;
-        }
-
-        return;
-    }
-
-    /* It's checking if the parameter `time` is true. If it is, it's restarting the game. */
-    if (time) {
-        game();
-        return;
-    }
-
+    /* Either displays the ability or the champion name and the score, depending on the lives of the player */
+    abilityDescription.innerHTML = lives > 0 ? randomAbility : "<p>The answer was <b>" + champName + "</b></p><p>Your score is: " + score + ".<p>";
+    livesStat.innerHTML = lives;
+    skipStat.innerHTML = skip;
+    streakStat.innerHTML = streak;
     return;
 }
 
 /**
- * It's checking if the guess is correct
+ * It's decreasing the lives by 1 and resetting the streak to its initial value.
+ * When the player has no more lives, it shows the right answer and switch to the losing screen.
+ * 
+ * Returns:
+ *   Nothing.
+ */
+export function lose() {
+    /* It's decreasing the lives by 1 and resetting the streak to its initial value. */
+    streak = initStreak;
+    lives--;
+
+    /* When the player has no more lives */
+    if (lives === 0) {
+        /* It's displaying the champName, closing and disabling the autocomplete list and the timer. */
+        displayGameInfo();
+        closeList();
+        disableAutocomplete(guessInput);
+        disableTimer();
+
+        /* It's disabling the submit button, the skip button, making the hourglass invisible, and making the
+        retry button visible. */
+        submitButton.disabled = true;
+        skipButton.disabled = true;
+        hourglass.hidden = true;
+        retryButton.hidden = false;
+
+        return;
+    }
+
+    /* It's resetting the timer and restarting the game. */
+    resetTimer(++failCombo);
+    game();
+    return;
+}
+
+/**
+ * It checks if the user's guess is correct
  * 
  * Returns:
  *   Nothing.
  */
 function checkGuess() {
-    /* It's getting the list of suggestions. */
-    const suggestionsDiv = document.getElementById("suggestions");
+    /* Taking the first suggestion or the guess of the user */
+    const suggestions = document.getElementById("suggestions");
+    const guess = suggestions ? suggestions.firstChild.textContent.toLowerCase() : guessInput.value.toLowerCase();
 
-    /* It's checking if the list of suggestions is open. If it is, it's getting the first
-    suggestion. If it isn't, it's getting the value of the input field. */
-    const guess = suggestionsDiv ? suggestionsDiv.firstChild.textContent.toLowerCase() : guessInput.value.toLowerCase();
-
-    /* It's checking if the guess is empty. */
-    if (!guess) {
+    /* It's checking if the user has no more lives or if the guess is empty. */
+    if (lives <= 0 || !guess) {
         return;
     }
 
-    /* It's closing the list of suggestions. */
+    /* Closing the autocomplete list and clearing the input. */
     closeList();
-
-    /* It's clearing the input field. */
     clearInput(guessInput);
 
-    /* It's checking if the guess is correct. */
+    /* Checking if the user's guess is correct. */
     for (const surname of surnames) {
-        if (guess === surname.toLowerCase() && guess) {
-            /* It's adding the score and the streak. */
-            score += gain + (streak * comboGain)
-            streak++;
-            failCombo = 0;
-            /* It's restarting the game. */
+        if (guess === surname.toLowerCase()) {
+            /* Adding the gain to the score, and then adding the streak multiplied by the comboGain to the score. */
+            score += gain + (streak++ * comboGain);
+
+            /* Resetting the failCombo variable to its initial value. */
+            failCombo = initFailCombo;
+
+            /* Resetting the game. */
             game();
             return;
         }
     }
 
-    /* It's calling the function `lose()` with the parameter `false`. */
-    lose(false);
+    /* Calling the lose function. */
+    lose();
     return;
 }
 
-/**
- * Disable the guess input field by setting its onkeydown event handler to null.
- * 
- * Returns:
- *   Nothing.
- */
-function disableGuess() {
-    guessInput.onkeydown = null;
+/* Listen whenever the user use the skip button, reducing his skips and restarting the game. */
+skipButton.onclick = function (event) {
+    /* Decreasing the skip variable by 1. */
+    streak = initStreak;
+    skip--;
+
+    /* Disabling the skip button if the user has no more skips. */
+    if (skip === 0) {
+        skipButton.disabled = true;
+    }
+
+    /* Restarting the game. */
+    game();
+    return;
+}
+
+/* An event listener that listens for the enter key to be pressed and then check the guess. */
+guessInput.onkeydown = function (event) {
+    /* If the enter key is pressed it prevents the default action and check the guess. */
+    if (event.key === "Enter") {
+        event.preventDefault();
+        checkGuess();
+    }
+
+    return;
+}
+
+/* Assigning the function `checkGuess()` to the `onclick` event of the `submitButton` element. */
+submitButton.onclick = function (event) {
+    checkGuess();
+    return;
+}
+
+/* The function that is called when the retry button is clicked. */
+retryButton.onclick = () => {
+    /* Making the hourglass visible, the submit button enabled, the skip button enabled, and the retry
+    button hidden. */
+    hourglass.hidden = false;
+    submitButton.disabled = false;
+    skipButton.disabled = false;
+    retryButton.hidden = true;
+
+    /* Resetting the lives, skip, and score to their initial values. */
+    lives = initLives;
+    skip = initSkip;
+    score = initScore;
+
+    /* Calling the game function and returning. */
+    game();
     return;
 }
