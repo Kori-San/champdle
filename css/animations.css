@@ -1,0 +1,127 @@
+.shake {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.05s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+.flash {
+    /* Start the flash animation and make the animation last for 0.5 seconds */
+    animation: flash 0.01s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes flash {
+
+    0%,
+    50%,
+    to {
+        opacity: 1
+    }
+
+    25%,
+    75% {
+        opacity: 0
+    }
+}
+
+.glitch {
+    /* Start the glitch animation and make the animation last for 0.5 seconds */
+    animation: glitch 0.01s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes glitch {
+    0% {
+        box-shadow: -2.5px 0 0#123f6f,
+            -2.5px -2.5px 0 #defbf9,
+            -2.5px -5px 0 #2f8879;
+
+        text-shadow: 1px 0 0 #123f6f,
+            -1px -0.25px 0 #defbf9,
+            -0.25px 1px 0 #2f8879;
+    }
+
+    25% {
+        text-shadow: -5px 0px 0#123f6f,
+            0px 0px 0 #defbf9,
+            -5px -5px 0 #2f8879;
+    }
+
+    50% {
+        box-shadow: 2.5px 5px 0#123f6f,
+            5px 0 0 #defbf9,
+            0 -5px 0 #2f8879;
+
+        text-shadow: 0.25px 1px 0#123f6f,
+            1px 0 0 #defbf9,
+            0 -1px 0 #2f8879;
+    }
+
+    75% {
+        text-shadow: 5px 5px 0#123f6f,
+            -5px 0 0 #defbf9,
+            0 -5px 0 #2f8879;
+    }
+
+    100% {
+        box-shadow: 5px 0 0 #123f6f,
+            -5px -2.5px 0 #defbf9,
+            -2.5px 5px 0 #2f8879;
+
+        text-shadow: -0.25px 0 0#123f6f,
+            -0.25px -0.25px 0 #defbf9,
+            -0.25px -1px 0 #2f8879;
+    }
+}

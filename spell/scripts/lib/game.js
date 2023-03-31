@@ -1,5 +1,5 @@
 import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "./fetch.js";
-import { clearInput, shakeScreen } from "./utilities.js";
+import { clearInput, animateElement } from "./utilities.js";
 import { disableTimer, resetTimer } from "./timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "./autocomplete.js";
 
@@ -12,19 +12,17 @@ const initLives = 3;
 const initSkip = 1;
 const initStreak = 0;
 const initScore = 0;
-const initFailCombo = 0;
+
+/* Const gain and ceils */
 const gain = 100;
 const comboGain = gain / 2;
 const comboForHeal = 5;
-const quakeTime = 0.5; // In seconds
+const animationTime = 0.5; // In seconds
 
 /* Basic mechanic */
-let failCombo = initFailCombo;
 let lives = initLives;
 let skip = initSkip;
 let streak = initStreak;
-
-/* Score mechanic */
 let score = initScore;
 
 // Data vars
@@ -82,6 +80,7 @@ export async function game() {
     increasing the lives by 1. */
     if (streak % comboForHeal == 0 && streak != initStreak) {
         lives++;
+        animateElement("flash", livesStat.parentElement, animationTime);
     }
 
     /* It's displaying the ability description, the number of lives, the number of skips, and the current
@@ -117,7 +116,8 @@ function displayGameInfo() {
  *   Nothing.
  */
 export function lose() {
-    shakeScreen(abilityDescription, quakeTime);
+    /* It's shaking the ability description and flashing the lives. */
+    animateElement("shake", abilityDescription.parentElement, animationTime);
 
     /* It's decreasing the lives by 1 and resetting the streak to its initial value. */
     streak = initStreak;
@@ -142,7 +142,7 @@ export function lose() {
     }
 
     /* It's resetting the timer and restarting the game. */
-    resetTimer(++failCombo);
+    resetTimer(0);
     game();
     return;
 }
@@ -173,9 +173,6 @@ function checkGuess() {
             /* Adding the gain to the score, and then adding the streak multiplied by the comboGain to the score. */
             score += gain + (streak++ * comboGain);
 
-            /* Resetting the failCombo variable to its initial value. */
-            failCombo = initFailCombo;
-
             /* Resetting the game. */
             game();
             return;
@@ -192,6 +189,9 @@ skipButton.onclick = function (event) {
     /* Decreasing the skip variable by 1. */
     streak = initStreak;
     skip--;
+
+    /* It's shaking the ability description and flashing the skip button. */
+    animateElement("glitch", abilityDescription.parentElement, animationTime);
 
     /* Disabling the skip button if the user has no more skips. */
     if (skip === 0) {
