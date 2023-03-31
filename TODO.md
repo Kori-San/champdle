@@ -1,5 +1,9 @@
 # P1
 - Select language (store it ?)
+- Docker
+- Makefile
+- src/ folder
+- config nginx
 
 ## P2
 - Animate the whole thing
