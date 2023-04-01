@@ -12,3 +12,9 @@ run:
 
 build:
 	...
+
+stop:
+	...
+
+ngrok:
+	...
