@@ -1,16 +1,17 @@
 # P1
 - Select language (store it ?)
-- Docker
+- System:
+    - dockerfile
+    - nginx conf
+    - .htaccess
+    - src folder
 - Makefile
-- src/ folder
-- config nginx
 
 ## P2
 - Animate the whole thing
 - Visual Feedbacks
 
 ### P3
-- .htaccess
 
 #### P4
 - Scoreboard ?

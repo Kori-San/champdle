@@ -52,19 +52,43 @@
     }
 }
 
-.flash {
+.hit {
     /* Start the flash animation and make the animation last for 0.5 seconds */
-    animation: flash 0.01s;
+    animation: hit 1s;
 
     /* When the animation is finished, start again */
     animation-iteration-count: infinite;
 }
 
-@keyframes flash {
+@keyframes hit {
 
     0%,
     50%,
     to {
+        box-shadow: 0px 0px 15px #802525;
+        opacity: 1
+    }
+
+    25%,
+    75% {
+        opacity: 0
+    }
+}
+
+.heal {
+    /* Start the flash animation and make the animation last for 0.5 seconds */
+    animation: heal 0.5s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes heal {
+
+    0%,
+    50%,
+    to {
+        box-shadow: 0px 0px 15px #2f8879;
         opacity: 1
     }
 

@@ -1,7 +1,7 @@
-import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "./fetch.js";
-import { clearInput, animateElement } from "./utilities.js";
+import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "/lib/fetch.js";
+import { clearInput, animateElement } from "/lib/utilities.js";
 import { disableTimer, resetTimer } from "./timer.js";
-import { autocomplete, closeList, disableAutocomplete } from "./autocomplete.js";
+import { autocomplete, closeList, disableAutocomplete } from "/lib/autocomplete.js";
 
 /* User preference */
 let language = "fr_FR";
@@ -80,7 +80,7 @@ export async function game() {
     increasing the lives by 1. */
     if (streak % comboForHeal == 0 && streak != initStreak) {
         lives++;
-        animateElement("flash", livesStat.parentElement, animationTime);
+        animateElement("heal", livesStat.parentElement, animationTime);
     }
 
     /* It's displaying the ability description, the number of lives, the number of skips, and the current
