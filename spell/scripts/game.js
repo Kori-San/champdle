@@ -1,6 +1,6 @@
 import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "/lib/fetch.js";
 import { clearInput, animateElement } from "/lib/utilities.js";
-import { disableTimer, resetTimer } from "./timer.js";
+import { checkTimer, disableTimer, resetTimer } from "../../lib/timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "/lib/autocomplete.js";
 
 /* User preference */
@@ -30,6 +30,7 @@ let score = initScore;
 let surnames = "";
 let randomAbility = "";
 let champName = "";
+let intervalID;
 
 // DOM vars
 /* Buttons */
@@ -89,6 +90,16 @@ export async function game() {
     displayGameInfo();
     resetTimer(streak);
     autocomplete(guessInput, allChamp);
+
+    /* It's checking if the timer is over every millisecond and if it is, it's calling the lose function. */
+    intervalID = window.setInterval(() => {
+        if (checkTimer()) {
+            window.clearInterval(intervalID);
+            lose();
+            return;
+        }
+    }, 1 /* Every millisecond */)
+
     return;
 }
 
