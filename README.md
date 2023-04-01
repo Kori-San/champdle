@@ -28,4 +28,6 @@ $ yum install docker.io make # RHEL flavored
 - ngrok -
 
 # ngrok
+> All rights for 'ngrok' and it's binary goes to [ngrok](https://ngrok.com/).
+
 ...
