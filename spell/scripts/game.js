@@ -91,7 +91,9 @@ export async function game() {
     resetTimer(streak);
     autocomplete(guessInput, allChamp);
 
-    /* It's checking if the timer is over every millisecond and if it is, it's calling the lose function. */
+    /*It's clearing the old checker. Check if the timer is over, if it is, it's calling the lose function. */
+    window.clearInterval(intervalID);
+
     intervalID = window.setInterval(() => {
         if (checkTimer()) {
             window.clearInterval(intervalID);
