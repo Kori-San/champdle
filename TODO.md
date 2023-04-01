@@ -1,10 +1,8 @@
 # P1
 - Select language (store it ?)
 - System:
-    - dockerfile
-    - nginx conf
+    - Dockerfile
     - .htaccess
-    - src folder
 - Makefile
 
 ## P2
