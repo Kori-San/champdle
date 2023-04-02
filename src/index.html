@@ -9,20 +9,37 @@
 
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="css/index.css">
+
+    <script type="module">
+        import { initLanguage } from "/lib/language.js";
+        initLanguage();
+    </script>
 </head>
 
 <body>
-    <div class="center">
+    <header class="center">
         <a href="/" class="logo">
             <img src="/images/logo.png">
         </a>
-    </div>
+    </header>
     <div class="league-font gamemodes">
         <a class="league-button" href="spell/">Champion's Spell Description</a>
         <a class="league-button-disabled" href="">Champion's Spell Icon</a>
         <a class="league-button-disabled" href="">Champion's Skins</a>
         <a class="league-button-disabled" href="">Item's Description</a>
     </div>
+    <footer class="footer">
+        <select class="language league-box league-font" name="language" id="language-select">
+            <option value="en_US">English (United States)</option>
+            <option value="fr_FR">Français (France)</option>
+            <option value="es_ES">Español (España)</option>
+            <option value="de_DE">Deutsch (Deutschland)</option>
+            <option value="ru_RU">Русский (Россия)</option>
+            <option value="ja_JP">日本語 (日本)</option>
+            <option value="ko_KR">한국어 (한국)</option>
+            <option value="zh_CN">中文 (中国)</option>
+        </select>
+    </footer>
 </body>
 
 </html>
