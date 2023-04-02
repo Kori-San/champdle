@@ -1,0 +1,91 @@
+.game {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.ability {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 25%;
+    padding: 25px;
+    gap: 15px;
+    padding-inline: 5%;
+}
+
+.description {
+    letter-spacing: 1.5px;
+    max-height: 100px;
+    overflow: auto;
+    margin: auto;
+    padding: 20px;
+    padding-bottom: 5px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.submit-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.submit-button img {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(0px 0px 10px #0a9bc4);
+}
+
+.submit-button:disabled {
+    cursor: not-allowed;
+}
+
+.submit-button:disabled img {
+    filter: drop-shadow(0px 0px 10px #802525);
+}
+
+.retry {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.retry button {
+    width: 50%;
+}
+
+.guess {
+    width: 100%;
+}
+
+.informations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.stat {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    color: #cdbe91;
+    font-family: 'Rubik', sans-serif;
+    font-weight: lighter;
+    font-variant: small-caps;
+}
+
+.stat-description img {
+    margin: auto;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 15px;
+    height: 15px;
+}

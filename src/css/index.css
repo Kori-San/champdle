@@ -1,0 +1,14 @@
+.gamemodes {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gamemodes 
+.league-button,
+.league-button-disabled {
+    margin: 15px;
+    width: 25%;
+}

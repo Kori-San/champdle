@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champdle</title>
+
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/autocomplete.css">
+    <link rel="stylesheet" href="/css/timer.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <script async type="module" src="./scripts/index.js"></script>
+    <div class="center">
+        <a href="/" class="logo">
+            <img src="/images/logo.png">
+        </a>
+    </div>
+    <div class="league-font title">
+        <h1>Guess the Champion with a Spell description</h1>
+    </div>
+    <div class="game">
+        <div class="ability">
+            <div class="league-box prevent-select">
+                <p class="league-font description glitch-text" id="description">
+                    The ability will appear here.
+                </p>
+                <div class="retry prevent-select">
+                    <button class="league-button league-font" id="retry" hidden="hidden">Retry</button>
+                </div>
+                <div class="countdown">
+                    <img id="hourglass" src="/images/icon/timer.webp">
+                    <div class="timer" id="timer">
+                    </div>
+                </div>
+            </div>
+            <div class="submit">
+                <div class="autocomplete">
+                    <input type="text" name="guess" class="league-font league-box guess" id="guess"
+                        placeholder="Champion">
+                </div>
+                <button class="submit-button" id="submit"><img src="/images/icon/arrow.webp"></button>
+            </div>
+        </div>
+        <div class="informations prevent-select">
+            <div class="league-box stat">
+                <p class="lives" id="lives">0</p>
+                <p class="stat-description">
+                    <img src="/images/icon/health.webp">
+                    Lives left
+                </p>
+            </div>
+            <div class="league-box stat">
+                <p class="streak" id="streak">0</p>
+                <p class="stat-description">
+                    <img src="/images/icon/streak.webp">
+                    Combo Streak
+                </p>
+            </div>
+            <button class="league-button stat" id="skip-button">
+                <p class="skip" id="skip">0</p>
+                <p class="stat-description">
+                    <img src="/images/icon/skip.webp">
+                    Skip left
+                </p>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
