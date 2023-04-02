@@ -11,16 +11,18 @@
     <link rel="stylesheet" href="/css/animations.css">
     <link rel="stylesheet" href="/css/autocomplete.css">
     <link rel="stylesheet" href="/css/timer.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <script async type="module" src="./scripts/index.js"></script>
-    <div class="center">
+    <header class="center">
         <a href="/" class="logo">
             <img src="/images/logo.png">
         </a>
-    </div>
+    </header>
     <div class="league-font title">
         <h1>Guess the Champion with a Spell description</h1>
     </div>
@@ -71,6 +73,18 @@
             </button>
         </div>
     </div>
+    <footer class="footer">
+        <select class="language league-box league-font" name="language" id="language-select">
+            <option value="en_US">English (United States)</option>
+            <option value="fr_FR">Français (France)</option>
+            <option value="es_ES">Español (España)</option>
+            <option value="de_DE">Deutsch (Deutschland)</option>
+            <option value="ru_RU">Русский (Россия)</option>
+            <option value="ja_JP">日本語 (日本)</option>
+            <option value="ko_KR">한국어 (한국)</option>
+            <option value="zh_CN">中文 (中国)</option>
+        </select>
+    </footer>
 </body>
 
 </html>

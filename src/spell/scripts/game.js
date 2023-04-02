@@ -1,10 +1,11 @@
 import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "/lib/fetch.js";
 import { clearInput, animateElement } from "/lib/utilities.js";
-import { checkTimer, disableTimer, resetTimer } from "../../lib/timer.js";
+import { checkTimer, disableTimer, resetTimer } from "/lib/timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "/lib/autocomplete.js";
+import { getLanguage } from "/lib/language.js";
 
 /* User preference */
-let language = "fr_FR";
+let language = getLanguage();
 
 // Gameplay vars
 /* Basic mechanic initValues */
