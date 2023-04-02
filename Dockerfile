@@ -6,10 +6,6 @@ COPY ./config/keys/ /etc/letsencrypt/live/champdle.com/
 COPY ./config/nginx/ /etc/nginx/
 COPY ./src/ /opt/champdle/
 
-# Installing vim on the docker container.
-RUN apt update
-RUN apt install -y vim
-
 # Exposing port 443 for https and port 80 for http
 EXPOSE 443
 EXPOSE 80
