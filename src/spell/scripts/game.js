@@ -138,6 +138,9 @@ export function lose() {
 
     /* When the player has no more lives */
     if (lives === 0) {
+        /* It's clearing the checker. */
+        window.clearInterval(intervalID);
+
         /* It's displaying the champName, closing and disabling the autocomplete list and the timer. */
         displayGameInfo();
         closeList();
