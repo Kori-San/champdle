@@ -25,10 +25,8 @@ Every *5 combo points* the **player** *heal himself for 1 life*.
 
 Each guess make the **player** *gain 100 Score points*. If the **player** is on a streak then he gains an additional *50 points for each combo points* he have.
 
-## ...
-...
-
-# Make rules
+# Makefile
+## Rules
 - ***all*** - Execute the start rule.
 - ***start*** - Start Champdle's container. The container must be built before using the 'build' rule.
 - ***build*** - Build the latest image for Champdle and create a container.
