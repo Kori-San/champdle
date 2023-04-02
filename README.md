@@ -17,13 +17,13 @@ $ yum install docker.io make # RHEL flavored
 ## Champion's spell description
 A random passive or ability is displayed on the screen.
 
-The **player** have *30 seconds* (*-3 seconds* for every combo point he have with a maxmimum of *-15 seconds*) to guess the champion who have this ability or passive.
+The **player** have ***30 seconds*** (***-3 seconds*** for every combo point he have with a maxmimum of ***-15 seconds***) to guess the champion who have this ability or passive.
 
-The **player** start with *3 lives* and *1 skip*. The skip allows the **player** to skip the guess and get another one without *losing a life*.
+The **player** start with ***3 lives*** and ***1 skip***. The skip allows the **player** to skip the guess and get another one without ***losing a life***.
 
-Every *5 combo points* the **player** *heal himself for 1 life*.
+Every ***5 combo points*** the **player** ***heal himself for 1 life***.
 
-Each guess make the **player** *gain 100 Score points*. If the **player** is on a streak then he gains an additional *50 points for each combo points* he have.
+Each guess make the **player** ***gain 100 Score points***. If the **player** is on a streak then he gains an additional ***50 points for each combo points*** he have.
 
 # Makefile
 ## Rules
