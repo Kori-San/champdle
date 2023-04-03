@@ -54,8 +54,8 @@ function createFooter() {
     footer.classList.add("footer");
 
     /* Adding the social media links to the footer. */
-    footer.innerHTML += generateSocial("http://www.example.com/", "/images/icon/socials/info.svg")
-    footer.innerHTML += generateSocial("https://www.twitter.com/rizaukori", "/images/icon/socials/twitter.svg")
+    footer.innerHTML += generateSocial("http://www.example.com/", "/images/icon/socials/info.svg");
+    footer.innerHTML += generateSocial("https://www.twitter.com/rizaukori", "/images/icon/socials/twitter.svg");
     footer.innerHTML += generateSocial("https://www.github.com/Kori-San/", "/images/icon/socials/github.svg");
     footer.innerHTML += generateSocial("http://www.example.com/", "/images/icon/socials/ko-fi.svg");
 
@@ -78,7 +78,7 @@ function createFooter() {
  */
 function generateSocial(socialURL, imgURL) {
     /* Creating a link to a social media page. */
-    let socialLink = "<a href=\"" + socialURL + "\">"
+    let socialLink = "<a href=\"" + socialURL + "\">";
     socialLink += "<img src=\"" + imgURL + "\">";
     socialLink += "</a>";
 
