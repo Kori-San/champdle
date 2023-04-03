@@ -32,6 +32,9 @@ Each guess make the **player** ***gain 100 Score points***. If the **player** is
 - ***build*** - Build the latest image for Champdle and create a container.
 - ***stop*** - Stop the container.
 - ***clean*** - Remove the container.
+- ***restart*** - Stop the container and start it again.
+- ***rebuild*** - Remove the container, build the latest image for Champdle and create a container.
+- ***reload*** - Stop the container, remove it, build the latest image for Champdle, create a container and start a the newly created container.
 - ***ngrok*** - Start a secure http tunnel.
 
 # ngrok

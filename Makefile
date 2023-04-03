@@ -11,29 +11,33 @@ HTTP_PORT = 80
 all: start 
 
 start:
-	@echo "Starting '$(CONTAINER_NAME)'"
-	docker start $(CONTAINER_NAME)
+	@echo "Champdle: Starting '$(CONTAINER_NAME)'"
+	@docker start $(CONTAINER_NAME) > /dev/null
 
 build:
-	@echo "Building '$(BUILD_TAG)'"
-	docker build -t $(BUILD_TAG) .
+	@echo "Champdle: Building '$(BUILD_TAG)'"
 
 	@echo ""
-	@echo "Creating Image '$(CONTAINER_NAME)'"
-	docker create -p $(HTTPS_PORT):443 -p $(HTTP_PORT):80 --name $(CONTAINER_NAME) $(BUILD_TAG)
+	@docker build -t $(BUILD_TAG) .
+	@echo ""
+	
+	@echo "Champdle: Creating Image '$(CONTAINER_NAME)'"
+	@docker create -p $(HTTPS_PORT):443 -p $(HTTP_PORT):80 --name $(CONTAINER_NAME) $(BUILD_TAG) > /dev/null
 
 stop:
-	@echo "Stopping '$(CONTAINER_NAME)'"
-	docker stop $(CONTAINER_NAME)
+	@echo "Champdle: Stopping '$(CONTAINER_NAME)'"
+	@docker stop $(CONTAINER_NAME) > /dev/null
 
 clean:
-	@echo "Removing '$(CONTAINER_NAME)'"
-	docker rm $(CONTAINER_NAME)
+	@echo "Champdle: Removing '$(CONTAINER_NAME)'"
+	@docker rm $(CONTAINER_NAME) > /dev/null
 
 restart: stop start
 
 rebuild: clean build
 
+reload: stop clean build start
+
 ngrok:
 	@echo "Launching ngrok's temporary server listening on port '$(HTTPS_PORT)'"
-	./bin/ngrok http $(HTTPS_PORT)
+	@./bin/ngrok http $(HTTPS_PORT)
