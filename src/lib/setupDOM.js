@@ -54,7 +54,6 @@ function createFooter() {
     footer.classList.add("footer");
 
     /* Adding the social media links to the footer. */
-    footer.innerHTML += generateSocial("http://www.example.com/", "/images/icon/socials/info.svg");
     footer.innerHTML += generateSocial("https://www.twitter.com/rizaukori", "/images/icon/socials/twitter.svg");
     footer.innerHTML += generateSocial("https://www.github.com/Kori-San/", "/images/icon/socials/github.svg");
     footer.innerHTML += generateSocial("http://www.example.com/", "/images/icon/socials/ko-fi.svg");
