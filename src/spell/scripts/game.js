@@ -1,10 +1,11 @@
 import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "/lib/fetch.js";
 import { clearInput, animateElement } from "/lib/utilities.js";
-import { checkTimer, disableTimer, resetTimer } from "../../lib/timer.js";
+import { checkTimer, disableTimer, resetTimer } from "/lib/timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "/lib/autocomplete.js";
+import { getLanguage } from "/lib/language.js";
 
 /* User preference */
-let language = "fr_FR";
+let language = getLanguage();
 
 // Gameplay vars
 /* Basic mechanic initValues */
@@ -65,7 +66,7 @@ export async function game() {
     /* It's getting the latest version of the game and the base endpoint and the image endpoint. */
     const latestVersion = await getLatestVersion();
     const baseEndpoint = "https://ddragon.leagueoflegends.com/cdn/" + latestVersion + "/data/" + language + "/";
-    const imgEndpoint = "http://ddragon.leagueoflegends.com/cdn/" + latestVersion + "/img/champion/";
+    const imgEndpoint = "https://ddragon.leagueoflegends.com/cdn/" + latestVersion + "/img/champion/";
 
     /* It's getting the data from the API. */
     const allChamp = await getAllChamp(baseEndpoint, imgEndpoint);
@@ -172,7 +173,7 @@ export function lose() {
 function checkGuess() {
     /* Taking the first suggestion or the guess of the user */
     const suggestions = document.getElementById("suggestions");
-    const guess = suggestions ? suggestions.firstChild.textContent.toLowerCase() : guessInput.value.toLowerCase();
+    const guess = suggestions && suggestions.firstChild ? suggestions.firstChild.textContent.toLowerCase() : guessInput.value.toLowerCase();
 
     /* It's checking if the user has no more lives or if the guess is empty. */
     if (lives <= 0 || !guess) {
