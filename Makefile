@@ -30,6 +30,10 @@ clean:
 	@echo "Removing '$(CONTAINER_NAME)'"
 	docker rm $(CONTAINER_NAME)
 
+restart: stop start
+
+rebuild: clean build
+
 ngrok:
 	@echo "Launching ngrok's temporary server listening on port '$(HTTPS_PORT)'"
 	./bin/ngrok http $(HTTPS_PORT)
