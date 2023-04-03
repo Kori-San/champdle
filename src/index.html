@@ -10,18 +10,10 @@
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="./css/index.css">
 
-    <script type="module">
-        import { initLanguage } from "/lib/language.js";
-        initLanguage();
-    </script>
+    <script type="module" src="/lib/setupDOM.js"></script>
 </head>
 
 <body>
-    <header class="center">
-        <a href="/" class="logo">
-            <img src="/images/logo.png">
-        </a>
-    </header>
     <div class="league-font gamemodes">
         <a class="league-button" href="spell/">Champion's Spell Description</a>
         <a class="league-button-disabled" href="">Champion's Spell Icon</a>
@@ -29,6 +21,19 @@
         <a class="league-button-disabled" href="">Item's Description</a>
     </div>
     <footer class="footer">
+        <a href="http://www.example.com/">
+            <img src="/images/icon/socials/info.svg">
+        </a>
+        <a href="https://www.twitter.com/rizaukori">
+            <img src="/images/icon/socials/twitter.svg">
+        </a>
+        <a href="https://www.github.com/Kori-San/">
+            <img src="/images/icon/socials/github.svg">
+        </a>
+        <a href="http://www.example.com/">
+            <img src="/images/icon/socials/ko-fi.svg">
+        </a>
+
         <select class="language league-box league-font" name="language" id="language-select">
             <option value="en_US">English (United States)</option>
             <option value="fr_FR">Français (France)</option>

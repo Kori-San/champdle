@@ -2,9 +2,6 @@
 const languageKey = "lang";
 const defaultLang = "en_US";
 
-// DOM Var
-const languageSelect = document.getElementById("language-select");
-
 /**
  * It initializes the languageSelect element.
  * 
@@ -12,6 +9,9 @@ const languageSelect = document.getElementById("language-select");
  *   Nothing.
  */
 export function initLanguage() {
+    /* Getting the languageSelect element. */
+    const languageSelect = document.getElementById("language-select");
+
     /* Display the right language on the footer. */
     displayLanguage();
 
@@ -46,6 +46,9 @@ export function getLanguage() {
  *   The selected language.
  */
 function storeLanguage() {
+    /* Getting the languageSelect element. */
+    const languageSelect = document.getElementById("language-select");
+
     /* Getting the value of the selected language. */
     const selectedLanguage = languageSelect.value;
 
@@ -64,6 +67,9 @@ function storeLanguage() {
  *   Nothing.
  */
 function displayLanguage() {
+    /* Getting the languageSelect element. */
+    const languageSelect = document.getElementById("language-select");
+
     /* Getting the current language. */
     const currentLang = getLanguage();
 
