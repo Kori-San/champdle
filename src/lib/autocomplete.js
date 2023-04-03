@@ -1,11 +1,14 @@
 import { cleanSurnames, pushIfNotPresent } from "./utilities.js";
 
+
 /**
- * It creates a list of suggestions based on the value that the user has typed into the input element
+ * It creates a suggestions list for the input element when the user clicks on it, removes the
+ * suggestions list from the DOM when the user clicks outside of the input element, and removes the
+ * suggestions list from the DOM and creates a new one when the user types into the input element
  * 
  * Args:
- *   input: The input element that the user is typing into.
- *   list: An array of arrays. Each array contains the champion's image URL and name.
+ *   input: The input element that the user types into.
+ *   list: The list of suggestions.
  * 
  * Returns:
  *   Nothing.
@@ -37,6 +40,16 @@ export function autocomplete(input, list) {
     return;
 }
 
+/**
+ * It creates a list of suggestions based on the value that the user has typed into the input element
+ * 
+ * Args:
+ *   input: The input element that the user is typing into.
+ *   list: The list of champions.
+ * 
+ * Returns:
+ *   Nothing.
+ */
 function createSuggestions(input, list) {
     /* Checking if the input element is empty. If it is, it returns. */
     const value = input.value;
