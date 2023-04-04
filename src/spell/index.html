@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="/css/timer.css">
     <link rel="stylesheet" href="./css/index.css">
 
-    <script type="module" src="/lib/setupDOM.js"></script>
+    <script type="module" src="/lib/setup/setup.js"></script>
 </head>
 
 <body>
-    <script async type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
     <div class="league-font title">
         <h1>Guess the Champion with a Spell description</h1>
     </div>
@@ -49,21 +49,21 @@
                 <p class="lives" id="lives">0</p>
                 <p class="stat-description">
                     <img src="/images/icon/games/health.webp">
-                    Lives left
                 </p>
+                <p>Lives</p>
             </div>
             <div class="league-box stat">
-                <p class="streak" id="streak">0</p>
+                <p class="streak ignore-translation" id="streak">0</p>
                 <p class="stat-description">
                     <img src="/images/icon/games/streak.webp">
-                    Combo Streak
+                <p>Combo</p>
                 </p>
             </div>
             <button class="league-button stat" id="skip-button">
-                <p class="skip" id="skip">0</p>
+                <p class="skip ignore-translation" id="skip">0</p>
                 <p class="stat-description">
                     <img src="/images/icon/games/skip.webp">
-                    Skip left
+                <p>Skip</p>
                 </p>
             </button>
         </div>
