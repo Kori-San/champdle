@@ -13,15 +13,25 @@ import { getLanguage } from "./language.js";
  *   Nothing.
  */
 export async function translateAllContent(parent) {
+    /* Selecting all child elements of the parent element. */
     const allNodes = document.querySelectorAll(parent + " *");
 
     for (const element of allNodes) {
+        /* If `innerText` is falsy (i.e. `null`, `undefined` or an empty string) then the loop skips over that element. */
+        if (!element.innerText) {
+            continue;
+        }
+        /* If the current element being iterated over has a class of "ignore-translation" the loop skips over that element. */
         if (element.classList.contains("ignore-translation")) {
             continue;
         }
-        else if (element.childNodes.length === 1) {
-            element.innerText = await translate(element.innerText);
+        /* If the element being iterated over has only one child node it means that the element contains only text content. */
+        if (element.childNodes.length != 1) {
+            continue;
         }
+
+        /* Replaces the original text content of the `element` with its translated version. */
+        element.innerText = await translate(element.innerText);
     }
 
     return;
@@ -40,16 +50,11 @@ export async function translateAllContent(parent) {
  * text.
  */
 async function translate(text) {
-    /* It checks if `text` is falsy (i.e. `null`, `undefined`, `false`, `0`, `NaN`, or an empty string) then it returns an empty string. */
-    if (!text) {
-        return "";
-    }
-
     /* Get current language ('en_US' by default) and remove the region tag (e.g remove '_US') */
     const language = getLanguage().replace(/_.*/, "");
 
     /* Make a request for libertranslate, giving the text to translate and the targeted language. */
-    const response = await fetch("http://localhost:8080/translate", {
+    const response = await fetch("http://localhost:5000/translate", {
         method: "POST",
         body: JSON.stringify({
             q: text,

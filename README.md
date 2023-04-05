@@ -28,13 +28,11 @@ Each guess make the **player** ***gain 100 Score points***. If the **player** is
 # Makefile
 ## Rules
 - ***all*** - Execute the start rule.
-- ***start*** - Start Champdle's container. The container must be built before using the 'build' rule.
-- ***build*** - Build the latest image for Champdle and create a container.
-- ***stop*** - Stop the container.
-- ***clean*** - Remove the container.
-- ***restart*** - Stop the container and start it again.
-- ***rebuild*** - Remove the container, build the latest image for Champdle and create a container.
-- ***reload*** - Stop the container, remove it, build the latest image for Champdle, create a container and start a the newly created container.
+- ***up*** - Create and Start Champdle's container cluster.
+- ***stop*** - Stop Champdle's container cluster.
+- ***restart*** - Stop, Re-Create and Start Champdle's container cluster. 
+- ***down*** - Stop and remove Champdle's container cluster.
+- ***prune*** - Remove **ALL** unused images and containers.
 - ***ngrok*** - Start a secure http tunnel.
 
 # ngrok

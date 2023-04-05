@@ -68,7 +68,7 @@ function generateLanguageSelector() {
     /* Looping through the languages object, and adding an option element to the language selector for each
     language. */
     for (const [code, language] of Object.entries(languages)) {
-        languageSelector += "<option value=\"" + code + "\">" + language + "</option>";
+        languageSelector += "<option class=\"ignore-translation\" value=\"" + code + "\">" + language + "</option>";
     }
 
     /* Adding the closing tag for the select element, and returning the language selector. */
