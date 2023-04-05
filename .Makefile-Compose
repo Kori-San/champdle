@@ -5,10 +5,10 @@ DOCKERCOMPOSE_FILE = ./conf/docker/docker-compose.yml
 HTTPS_PORT = 443
 
 # PHONY Rule
-.PHONY: all start build stop clean ngrok
+.PHONY: all up stop restart ngrok
 
 # Rules
-all: up 
+all: up
 
 up:
 	@docker-compose -p $(PROJECT_NAME) -f $(DOCKERCOMPOSE_FILE) up --build -d --remove-orphans
