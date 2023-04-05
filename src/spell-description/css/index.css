@@ -4,7 +4,7 @@
     gap: 25px;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 950px) {
     .game {
         flex-direction: column;
         align-items: center;
@@ -87,11 +87,18 @@
     gap: 15px;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 950px) {
     .informations {
         flex-direction: row;
     }
 }
+
+@media screen and (max-width: 450px) {
+    .informations {
+        gap: 10px;
+    }
+}
+
 
 .stat {
     display: flex;
