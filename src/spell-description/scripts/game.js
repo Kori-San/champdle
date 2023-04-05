@@ -1,8 +1,9 @@
 import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "/lib/fetch.js";
-import { clearInput, animateElement } from "/lib/utilities.js";
+import { clearInput } from "/lib/utilities.js";
 import { checkTimer, disableTimer, resetTimer } from "/lib/timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "/lib/autocomplete.js";
 import { getLanguage } from "/lib/language.js";
+import { animateElementCSS, confettiAnimation } from "/lib/animations.js";
 
 /* User preference */
 let language = getLanguage();
@@ -18,7 +19,6 @@ const initScore = 0;
 const gain = 100;
 const comboGain = gain / 2;
 const comboForHeal = 5;
-const animationTime = 0.5; // In seconds
 
 /* Basic mechanic */
 let lives = initLives;
@@ -32,6 +32,9 @@ let surnames = "";
 let randomAbility = "";
 let champName = "";
 let intervalID;
+
+/* Animations */
+const cssAnimationTime = 0.5; // In seconds
 
 // DOM vars
 /* Buttons */
@@ -87,7 +90,7 @@ export async function game() {
     increasing the lives by 1. */
     if (streak % comboForHeal == 0 && streak != initStreak) {
         lives++;
-        animateElement("heal", livesStat.parentElement, animationTime);
+        animateElementCSS("heal", livesStat.parentElement, cssAnimationTime);
     }
 
     /* Setting the scroll position of the `abilityDescription` element to the top. */
@@ -136,7 +139,7 @@ function displayGameInfo() {
  */
 export function lose() {
     /* It's shaking the ability description and flashing the lives. */
-    animateElement("shake", abilityDescription.parentElement, animationTime);
+    animateElementCSS("shake", abilityDescription.parentElement, cssAnimationTime);
 
     /* It's decreasing the lives by 1 and resetting the streak to its initial value. */
     streak = initStreak;
@@ -199,6 +202,7 @@ function checkGuess() {
         if (guess === surname.toLowerCase()) {
             /* Adding the gain to the score, and then adding the streak multiplied by the comboGain to the score. */
             score += gain + (streak++ * comboGain);
+            confettiAnimation();
 
             /* Resetting the game. */
             game();
@@ -218,7 +222,7 @@ skipButton.onclick = function (event) {
     skip--;
 
     /* It's shaking the ability description and flashing the skip button. */
-    animateElement("glitch", abilityDescription.parentElement, animationTime);
+    animateElementCSS("glitch", abilityDescription.parentElement, cssAnimationTime);
 
     /* Disabling the skip button if the user has no more skips. */
     if (skip === 0) {
