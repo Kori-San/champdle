@@ -38,6 +38,7 @@ let intervalID;
 const skipButton = document.getElementById("skip-button");
 const submitButton = document.getElementById("submit");
 const retryButton = document.getElementById("retry");
+const twitterButton = document.getElementById("twitter-share-button");
 
 /* Texts */
 const abilityDescription = document.getElementById("description");
@@ -155,6 +156,9 @@ export function lose() {
         hourglass.hidden = true;
         retryButton.hidden = false;
 
+        twitterButton.href="https://twitter.com/intent/tweet?text=I've%20just%20did%20a%20score%20of%20" + score + "%20on%20Champdle!";
+        twitterButton.hidden = false;
+
         return;
     }
 
@@ -245,6 +249,7 @@ retryButton.onclick = () => {
     submitButton.disabled = false;
     skipButton.disabled = false;
     retryButton.hidden = true;
+    twitterButton.hidden = true;
 
     /* Resetting the lives, skip, and score to their initial values. */
     lives = initLives;

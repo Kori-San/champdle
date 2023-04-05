@@ -53,6 +53,7 @@
     justify-content: center;
     margin: auto;
     margin-top: 15px;
+    gap: 15px
 }
 
 .retry button {
