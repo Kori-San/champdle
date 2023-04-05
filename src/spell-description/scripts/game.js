@@ -64,6 +64,9 @@ const hourglass = document.getElementById("hourglass");
  *   Nothing.
  */
 export async function game() {
+    /*It's clearing the old checker. Check if the timer is over, if it is, it's calling the lose function. */
+    window.clearInterval(intervalID);
+
     /* It's getting the latest version of the game and the base endpoint and the image endpoint. */
     const latestVersion = await getLatestVersion();
     const baseEndpoint = "https://ddragon.leagueoflegends.com/cdn/" + latestVersion + "/data/" + language + "/";
@@ -86,15 +89,14 @@ export async function game() {
         animateElement("heal", livesStat.parentElement, animationTime);
     }
 
+    /* Setting the scroll position of the `abilityDescription` element to the top. */
+    abilityDescription.scrollTop = 0;
+
     /* It's displaying the ability description, the number of lives, the number of skips, and the current
      * streak. */
-    abilityDescription.scrollTop = 0;
     displayGameInfo();
     resetTimer(streak);
     autocomplete(guessInput, allChamp);
-
-    /*It's clearing the old checker. Check if the timer is over, if it is, it's calling the lose function. */
-    window.clearInterval(intervalID);
 
     intervalID = window.setInterval(() => {
         if (checkTimer()) {
@@ -143,11 +145,13 @@ export function lose() {
         /* It's clearing the checker. */
         window.clearInterval(intervalID);
 
-        /* It's displaying the champName, closing and disabling the autocomplete list and the timer. */
+        /* It's disabling the timer. */
+        disableTimer();
+
+        /* It's displaying the champName, closing and disabling the autocomplete list. */
         displayGameInfo();
         closeList();
         disableAutocomplete(guessInput);
-        disableTimer();
 
         /* It's disabling the submit button, the skip button, making the hourglass invisible, and making the
         retry button visible. */
@@ -156,7 +160,7 @@ export function lose() {
         hourglass.hidden = true;
         retryButton.hidden = false;
 
-        twitterButton.href="https://twitter.com/intent/tweet?text=I've%20just%20did%20a%20score%20of%20" + score + "%20on%20Champdle!";
+        twitterButton.href = "https://twitter.com/intent/tweet?text=I've%20just%20did%20a%20score%20of%20" + score + "%20on%20Champdle!";
         twitterButton.hidden = false;
 
         return;
@@ -235,11 +239,11 @@ guessInput.onkeydown = function (event) {
     return;
 }
 
-/* Assigning the function `checkGuess()` to the `onclick` event of the `submitButton` element. */
-submitButton.onclick = function (event) {
+/* Check guess of the user when the user presses his mouse down the submit button. */
+submitButton.addEventListener("mousedown", () => {
     checkGuess();
     return;
-}
+});
 
 /* The function that is called when the retry button is clicked. */
 retryButton.onclick = () => {
