@@ -6,9 +6,29 @@
     align-items: center;
 }
 
-.gamemodes 
-.league-button,
+.gamemodes .league-button,
 .league-button-disabled {
     margin: 15px;
-    width: 25%;
+    width: 30%;
+}
+
+@media screen and (max-width: 1600px) {
+    .gamemodes .league-button,
+    .league-button-disabled {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .gamemodes .league-button,
+    .league-button-disabled {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .gamemodes .league-button,
+    .league-button-disabled {
+        width: 75%;
+    }
 }

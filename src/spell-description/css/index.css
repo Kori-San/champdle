@@ -4,13 +4,38 @@
     gap: 25px;
 }
 
+@media screen and (max-width: 1500px) {
+    .game {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .ability {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 25%;
+    width: 33%;
     padding: 25px;
     gap: 15px;
+}
+
+@media screen and (max-width: 1500px) {
+    .ability {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .ability {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .ability {
+        width: 100%;
+    }
 }
 
 .description {
@@ -56,8 +81,16 @@
     gap: 15px
 }
 
-.retry button {
-    width: 50%;
+@media screen and (max-width: 450px) {
+    .retry {
+        gap: 5px;
+    }
+}
+
+
+.retry button,
+.twitter-share-button {
+    width: 35%;
 }
 
 .guess {
@@ -71,6 +104,12 @@
     gap: 15px;
 }
 
+@media screen and (max-width: 1500px) {
+    .informations {
+        flex-direction: row;
+    }
+}
+
 .stat {
     display: flex;
     justify-content: center;
@@ -82,10 +121,27 @@
     font-variant: small-caps;
 }
 
+@media screen and (max-width: 600px) {
+    .stat {
+        gap: 1.5px;
+        font-size: x-small;
+        font-weight: normal;
+    }
+}
+
 .stat-description img {
     margin: auto;
     padding-right: 5px;
     padding-left: 5px;
     width: 15px;
     height: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .stat-description img {
+        padding-right: 2.5px;
+        padding-left: 2.5px;
+        width: 10px;
+        height: 10px;
+    }
 }
