@@ -1,7 +1,15 @@
 # Very Important
-- **[BONUS]** Twitter Share button - On lose, make a button appear so people can share there score on twitter.
+- **[FEAT]** Translation - Translate the whole website (expect API Calls) using https://libretranslate.com/.
+
+- **[FEAT]** Champion's spell icon - Guess the champion from a Spell Icon.
+
+- **[FEAT]** Champion's skin -  Guess the champion from a skin.
+
+- **[FEAT]** Item's description - Guess an item from it's description.
 
 # Important
+- **[BONUS]** Twitter Share text - Add consistency and valor to the tweet.
+
 - **[BONUS]** Animations - Add more animations and visual feedbacks.
 
 - **[FIX]** Mediaquery - Add mediaquerys to css to make it playable on Smartphones.

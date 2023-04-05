@@ -1,5 +1,3 @@
-import { initLanguage } from "./language.js";
-
 const languages = {
     "en_US": "English (United States)",
     "fr_FR": "Français (France)",
@@ -11,34 +9,6 @@ const languages = {
     "zh_CN": "中文 (中国)"
 }
 
-/* Calling the `createHeader()` and `createFooter()` functions. */
-createHeader();
-createFooter();
-
-/* Calling the `initLanguage()` function from the `language.js` file. */
-initLanguage();
-
-/**
- * It creates a header element and adds it to the body.
- * 
- * Returns:
- *   Nothing.
- */
-function createHeader() {
-    /* Creating a header element and adding it to the body. */
-    const header = document.createElement("header");
-
-    /* It adds the class "center" to the header element. */
-    header.classList.add("center");
-
-    /* It adds the logo to the header. */
-    header.innerHTML += "<a href=\"/\" class=\"logo\"> <img src=\"/images/logo.png\"> </a>";
-
-    /* It adds the header to the body. */
-    document.body.prepend(header);
-    return;
-}
-
 /**
  * It creates a footer element, adds a class to it, adds social media links to it, adds a language
  * selector to it, and then adds it to the body
@@ -46,7 +16,7 @@ function createHeader() {
  * Returns:
  *   Nothing.
  */
-function createFooter() {
+export function createFooter() {
     /* Creating a footer element it to the body. */
     const footer = document.createElement("footer");
 
