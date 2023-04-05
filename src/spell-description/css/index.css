@@ -26,13 +26,19 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1250px) {
     .ability {
         width: 75%;
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
+    .ability {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 500px) {
     .ability {
         width: 100%;
     }
