@@ -106,7 +106,7 @@ function createSuggestions(input, list) {
                 const suggestion = document.createElement("div");
                 suggestion.className = "suggestion league-font";
                 suggestion.innerHTML = "<div id=\"suggestion-img\"><img src=\"" + img + "\"></div><div id=\"suggestion-name\">" + name + "</div>";
-                suggestion.addEventListener("click", function () {
+                suggestion.addEventListener("mousedown", function () {
                     input.value = name;
                     closeList();
                 });
