@@ -5,8 +5,8 @@ let intervalID; // ID of the window.setInterval worker
 // Interval for refreshing the timer in milliseconds.
 const interval = 1;
 
-// Time at start (in seconds).
-const initTime = 30; // TODO: Check why answer is invalidated if time less than ~1 second 
+// Time at start (in seconds). Never under 5 seconds.
+const initTime = 30;
 
 // Maximum combo streak for full penality.
 const maxComboForPenality = 5;

@@ -64,8 +64,9 @@ const hourglass = document.getElementById("hourglass");
  *   Nothing.
  */
 export async function game() {
-    /*It's clearing the old checker. Check if the timer is over, if it is, it's calling the lose function. */
+    /*It's clearing the old timer. */
     window.clearInterval(intervalID);
+    disableTimer();
 
     /* It's getting the latest version of the game and the base endpoint and the image endpoint. */
     const latestVersion = await getLatestVersion();
@@ -98,6 +99,7 @@ export async function game() {
     resetTimer(streak);
     autocomplete(guessInput, allChamp);
 
+    /* Check if the timer is over, if it is, it's calling the lose function.*/
     intervalID = window.setInterval(() => {
         if (checkTimer()) {
             window.clearInterval(intervalID);
