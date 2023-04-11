@@ -3,7 +3,7 @@ import { clearInput } from "/lib/utilities.js";
 import { checkTimer, disableTimer, resetTimer } from "/lib/timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "/lib/autocomplete.js";
 import { getLanguage } from "/lib/language.js";
-import { animateElementCSS, confettiAnimation } from "/lib/animations.js";
+import { animateElementCSS } from "/lib/animations.js";
 
 /* User preference */
 let language = getLanguage();
@@ -140,6 +140,11 @@ function displayGameInfo() {
 export function lose() {
     /* It's shaking the ability description and flashing the lives. */
     animateElementCSS("shake", abilityDescription.parentElement, cssAnimationTime);
+    animateElementCSS("hit", livesStat.parentElement, cssAnimationTime);
+
+    if (streak > initScore) {
+        animateElementCSS("streakLoss", streakStat.parentElement, cssAnimationTime);
+    }
 
     /* It's decreasing the lives by 1 and resetting the streak to its initial value. */
     streak = initStreak;
@@ -202,7 +207,9 @@ function checkGuess() {
         if (guess === surname.toLowerCase()) {
             /* Adding the gain to the score, and then adding the streak multiplied by the comboGain to the score. */
             score += gain + (streak++ * comboGain);
-            confettiAnimation();
+
+            animateElementCSS("streakGain", streakStat.parentElement, cssAnimationTime);
+            animateElementCSS("hextechJumpingText", abilityDescription.parentElement, cssAnimationTime);
 
             /* Resetting the game. */
             game();
