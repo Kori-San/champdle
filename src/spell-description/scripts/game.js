@@ -18,7 +18,7 @@ const initScore = 0;
 /* Const gain and ceils */
 const gain = 100;
 const comboGain = gain / 2;
-const comboForHeal = 5;
+const comboForHeal = 2;
 
 /* Basic mechanic */
 let lives = initLives;
@@ -26,12 +26,14 @@ let skip = initSkip;
 let streak = initStreak;
 let score = initScore;
 
+/* ID of timer interval */
+let intervalID;
+
 // Data vars
 /* DDragon's vars */
 let surnames = "";
 let randomAbility = "";
 let champName = "";
-let intervalID;
 
 /* Animations */
 const cssAnimationTime = 0.5; // In seconds
@@ -86,13 +88,6 @@ export async function game() {
     surnames = data[1];
     champName = data[2];
 
-    /* It's checking if the streak is a multiple of 5 and if it's not the initial streak. If it is, it's
-    increasing the lives by 1. */
-    if (streak % comboForHeal == 0 && streak != initStreak) {
-        lives++;
-        animateElementCSS("heal", livesStat.parentElement, cssAnimationTime);
-    }
-
     /* Setting the scroll position of the `abilityDescription` element to the top. */
     abilityDescription.scrollTop = 0;
 
@@ -143,7 +138,7 @@ export function lose() {
     animateElementCSS("hit", livesStat.parentElement, cssAnimationTime);
 
     if (streak > initScore) {
-        animateElementCSS("streakLoss", streakStat.parentElement, cssAnimationTime);
+        animateElementCSS("shake", streakStat.parentElement, cssAnimationTime);
     }
 
     /* It's decreasing the lives by 1 and resetting the streak to its initial value. */
@@ -208,6 +203,15 @@ function checkGuess() {
             /* Adding the gain to the score, and then adding the streak multiplied by the comboGain to the score. */
             score += gain + (streak++ * comboGain);
 
+            /* It's checking if the streak is a multiple of 5 and if it's not the initial streak. If it is, it's
+            increasing the lives by 1. */
+            if (streak % comboForHeal == 0 && streak != initStreak) {
+                lives++;
+                animateElementCSS("hextechJumpingText", livesStat.parentElement, cssAnimationTime);
+            }
+
+            /* Animating the streakStat and abilityDescription parent elements using CSS
+            animations. */
             animateElementCSS("streakGain", streakStat.parentElement, cssAnimationTime);
             animateElementCSS("hextechJumpingText", abilityDescription.parentElement, cssAnimationTime);
 
