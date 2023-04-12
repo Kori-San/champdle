@@ -2,10 +2,17 @@
 let intervalID; // ID of the window.setInterval worker
 
 /* Setting the variables that will be used in the timer function. */
-const interval = 1; // Interval for refreshing the timer in milliseconds.
-const initTime = 30; // Time at start (in seconds).
-const maxComboForPenality = 5; // Maximum combo streak for full penality.
-const penalityPerCombo = 3; // Seconds that are taken out per combo point.
+// Interval for refreshing the timer in milliseconds.
+const interval = 1;
+
+// Time at start (in seconds). Never under 5 seconds.
+const initTime = 30;
+
+// Maximum combo streak for full penality.
+const maxComboForPenality = 5;
+
+// Seconds that are taken out per combo point.
+const penalityPerCombo = 3;
 
 /* Setting the `timerElement` variable to the element with the id `timer`. */
 const timerElement = document.getElementById("timer");

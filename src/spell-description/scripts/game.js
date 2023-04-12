@@ -1,8 +1,9 @@
 import { getLatestVersion, getRandomChampURL, getRandomAbilty, getAllChamp } from "/lib/fetch.js";
-import { clearInput, animateElement } from "/lib/utilities.js";
+import { clearInput } from "/lib/utilities.js";
 import { checkTimer, disableTimer, resetTimer } from "/lib/timer.js";
 import { autocomplete, closeList, disableAutocomplete } from "/lib/autocomplete.js";
 import { getLanguage } from "/lib/language.js";
+import { animateElementCSS } from "/lib/animations.js";
 
 /* User preference */
 let language = getLanguage();
@@ -17,8 +18,7 @@ const initScore = 0;
 /* Const gain and ceils */
 const gain = 100;
 const comboGain = gain / 2;
-const comboForHeal = 5;
-const animationTime = 0.5; // In seconds
+const comboForHeal = 2;
 
 /* Basic mechanic */
 let lives = initLives;
@@ -26,12 +26,17 @@ let skip = initSkip;
 let streak = initStreak;
 let score = initScore;
 
+/* ID of timer interval */
+let intervalID;
+
 // Data vars
 /* DDragon's vars */
 let surnames = "";
 let randomAbility = "";
 let champName = "";
-let intervalID;
+
+/* Animations */
+const cssAnimationTime = 0.5; // In seconds
 
 // DOM vars
 /* Buttons */
@@ -64,6 +69,10 @@ const hourglass = document.getElementById("hourglass");
  *   Nothing.
  */
 export async function game() {
+    /*It's clearing the old timer. */
+    window.clearInterval(intervalID);
+    disableTimer();
+
     /* It's getting the latest version of the game and the base endpoint and the image endpoint. */
     const latestVersion = await getLatestVersion();
     const baseEndpoint = "https://ddragon.leagueoflegends.com/cdn/" + latestVersion + "/data/" + language + "/";
@@ -79,23 +88,16 @@ export async function game() {
     surnames = data[1];
     champName = data[2];
 
-    /* It's checking if the streak is a multiple of 5 and if it's not the initial streak. If it is, it's
-    increasing the lives by 1. */
-    if (streak % comboForHeal == 0 && streak != initStreak) {
-        lives++;
-        animateElement("heal", livesStat.parentElement, animationTime);
-    }
+    /* Setting the scroll position of the `abilityDescription` element to the top. */
+    abilityDescription.scrollTop = 0;
 
     /* It's displaying the ability description, the number of lives, the number of skips, and the current
      * streak. */
-    abilityDescription.scrollTop = 0;
     displayGameInfo();
     resetTimer(streak);
     autocomplete(guessInput, allChamp);
 
-    /*It's clearing the old checker. Check if the timer is over, if it is, it's calling the lose function. */
-    window.clearInterval(intervalID);
-
+    /* Check if the timer is over, if it is, it's calling the lose function.*/
     intervalID = window.setInterval(() => {
         if (checkTimer()) {
             window.clearInterval(intervalID);
@@ -132,7 +134,12 @@ function displayGameInfo() {
  */
 export function lose() {
     /* It's shaking the ability description and flashing the lives. */
-    animateElement("shake", abilityDescription.parentElement, animationTime);
+    animateElementCSS("shake", abilityDescription.parentElement, cssAnimationTime);
+    animateElementCSS("hit", livesStat.parentElement, cssAnimationTime);
+
+    if (streak > initScore) {
+        animateElementCSS("shake", streakStat.parentElement, cssAnimationTime);
+    }
 
     /* It's decreasing the lives by 1 and resetting the streak to its initial value. */
     streak = initStreak;
@@ -143,11 +150,13 @@ export function lose() {
         /* It's clearing the checker. */
         window.clearInterval(intervalID);
 
-        /* It's displaying the champName, closing and disabling the autocomplete list and the timer. */
+        /* It's disabling the timer. */
+        disableTimer();
+
+        /* It's displaying the champName, closing and disabling the autocomplete list. */
         displayGameInfo();
         closeList();
         disableAutocomplete(guessInput);
-        disableTimer();
 
         /* It's disabling the submit button, the skip button, making the hourglass invisible, and making the
         retry button visible. */
@@ -156,7 +165,7 @@ export function lose() {
         hourglass.hidden = true;
         retryButton.hidden = false;
 
-        twitterButton.href="https://twitter.com/intent/tweet?text=I've%20just%20did%20a%20score%20of%20" + score + "%20on%20Champdle!";
+        twitterButton.href = "https://twitter.com/intent/tweet?text=I've%20just%20did%20a%20score%20of%20" + score + "%20on%20Champdle!";
         twitterButton.hidden = false;
 
         return;
@@ -194,6 +203,18 @@ function checkGuess() {
             /* Adding the gain to the score, and then adding the streak multiplied by the comboGain to the score. */
             score += gain + (streak++ * comboGain);
 
+            /* It's checking if the streak is a multiple of 5 and if it's not the initial streak. If it is, it's
+            increasing the lives by 1. */
+            if (streak % comboForHeal == 0 && streak != initStreak) {
+                lives++;
+                animateElementCSS("hextechJumpingText", livesStat.parentElement, cssAnimationTime);
+            }
+
+            /* Animating the streakStat and abilityDescription parent elements using CSS
+            animations. */
+            animateElementCSS("streakGain", streakStat.parentElement, cssAnimationTime);
+            animateElementCSS("hextechJumpingText", abilityDescription.parentElement, cssAnimationTime);
+
             /* Resetting the game. */
             game();
             return;
@@ -212,7 +233,7 @@ skipButton.onclick = function (event) {
     skip--;
 
     /* It's shaking the ability description and flashing the skip button. */
-    animateElement("glitch", abilityDescription.parentElement, animationTime);
+    animateElementCSS("glitch", abilityDescription.parentElement, cssAnimationTime);
 
     /* Disabling the skip button if the user has no more skips. */
     if (skip === 0) {
@@ -235,11 +256,11 @@ guessInput.onkeydown = function (event) {
     return;
 }
 
-/* Assigning the function `checkGuess()` to the `onclick` event of the `submitButton` element. */
-submitButton.onclick = function (event) {
+/* Check guess of the user when the user presses his mouse down the submit button. */
+submitButton.addEventListener("mousedown", () => {
     checkGuess();
     return;
-}
+});
 
 /* The function that is called when the retry button is clicked. */
 retryButton.onclick = () => {

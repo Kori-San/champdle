@@ -1,8 +1,17 @@
-.shake {
-    /* Start the shake animation and make the animation last for 0.5 seconds */
-    animation: shake 0.05s;
+/* This CSS code is targeting users who have enabled the "reduce motion" option in their device
+settings. It disables all animations and transitions on the webpage by setting the animation and
+transition properties to "none" for all elements using the universal selector (*). This is done to
+reduce motion sickness or discomfort for users who may be sensitive to animations or have certain
+disabilities. */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
 
-    /* When the animation is finished, start again */
+.shake {
+    animation: shake 0.05s;
     animation-iteration-count: infinite;
 }
 
@@ -53,56 +62,64 @@
 }
 
 .hit {
-    /* Start the flash animation and make the animation last for 0.5 seconds */
-    animation: hit 1s;
-
-    /* When the animation is finished, start again */
+    animation: hit 0.5s;
     animation-iteration-count: infinite;
 }
 
 @keyframes hit {
-
-    0%,
-    50%,
-    to {
-        box-shadow: 0px 0px 15px #802525;
-        opacity: 1
+    0% {
+        transform: translateY(0.1em);
+        text-shadow:
+            0 0 0 #ff5252,
+            0 0 0 #b33939;
+        box-shadow:
+            0 0 0 #ff5252,
+            0 0 0 #b33939;
     }
 
-    25%,
-    75% {
-        opacity: 0
-    }
-}
-
-.heal {
-    /* Start the flash animation and make the animation last for 0.5 seconds */
-    animation: heal 0.5s;
-
-    /* When the animation is finished, start again */
-    animation-iteration-count: infinite;
-}
-
-@keyframes heal {
-
-    0%,
-    50%,
-    to {
-        box-shadow: 0px 0px 15px #2f8879;
-        opacity: 1
+    20% {
+        transform: translateY(0.2em);
+        text-shadow:
+            0 -0.125em 0 #ff5252,
+            0 -0.25em 0 #b33939;
+        box-shadow:
+            0 -0.125em 0 #b33939,
+            0 -0.25em 0 #ff5252;
     }
 
-    25%,
-    75% {
-        opacity: 0
+    40% {
+        transform: translateY(0.3em);
+        text-shadow:
+            0 -0.0625em 0 #b33939,
+            0 -0.125em 0 #ff5252;
+        box-shadow:
+            0 -0.0625em 0 #ff5252,
+            0 -0.125em 0 #b33939,
+    }
+
+    60% {
+        transform: translateY(0.4em);
+        text-shadow:
+            0 -0.03125em 0 #ff5252,
+            0 -0.0625em 0 #b33939;
+        box-shadow:
+            0 -0.03125em 0 #b33939,
+            0 -0.0625em 0 #ff5252;
+    }
+
+    80% {
+        transform: translateY(0.5em);
+        text-shadow:
+            0 0 0 #ff5252,
+            0 0 0 #b33939;
+        box-shadow:
+            0 0 0 #ff5252,
+            0 0 0 #b33939;
     }
 }
 
 .glitch {
-    /* Start the glitch animation and make the animation last for 0.5 seconds */
     animation: glitch 0.01s;
-
-    /* When the animation is finished, start again */
     animation-iteration-count: infinite;
 }
 
@@ -169,5 +186,130 @@
         text-shadow: -0.25px 0 0#123f6f,
             -0.25px -0.25px 0 #defbf9,
             -0.25px -1px 0 #2f8879;
+    }
+}
+
+
+.streakGain {
+    animation: streakGain 0.25s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes streakGain {
+    0% {
+        text-shadow:
+            0 0 0 #ffb142,
+            0 0 0 #cc8e35,
+            0 0 0 #ff793f,
+            0 0 0 #cd6133;
+        box-shadow:
+            0 0 0 #ffb142,
+            0 0 0 #cc8e35,
+            0 0 0 #ff793f,
+            0 0 0 #cd6133;
+    }
+
+    20% {
+        text-shadow:
+            0.125em 0 0 #ffb142,
+            0.25em 0 0 #cc8e35,
+            -0.125em 0 0 #ff793f,
+            -0.25em 0 0 #cd6133;
+        box-shadow:
+            0.125em 0 0 #ffb142,
+            0.25em 0 0 #cc8e35,
+            -0.125em 0 0 #ff793f,
+            -0.25em 0 0 #cd6133;
+    }
+
+    40% {
+        text-shadow:
+            -0.0625em 0 0 #ffb142,
+            -0.125em 0 0 #cc8e35,
+            0.0625em 0 0 #ff793f,
+            0.125em 0 0 #cd6133;
+        box-shadow:
+            -0.0625em 0 0 #ffb142,
+            -0.125em 0 0 #cc8e35,
+            0.0625em 0 0 #ff793f,
+            0.125em 0 0 #cd6133;
+    }
+
+    60% {
+        text-shadow:
+            0.03125em 0 0 #ffb142,
+            0.0625em 0 0 #cc8e35,
+            -0.03125em 0 0 #ff793f,
+            -0.0625em 0 0 #cd6133;
+        box-shadow:
+            0.03125em 0 0 #ffb142,
+            0.0625em 0 0 #cc8e35,
+            -0.03125em 0 0 #ff793f,
+            -0.0625em 0 0 #cd6133;
+    }
+
+    80% {
+        text-shadow:
+            0 0 0 #ffb142,
+            0 0 0 #cc8e35,
+            0 0 0 #ff793f,
+            0 0 0 #cd6133;
+        box-shadow:
+            0 0 0 #ffb142,
+            0 0 0 #cc8e35,
+            0 0 0 #ff793f,
+            0 0 0 #cd6133;
+    }
+}
+
+.hextechJumpingText {
+    animation: hextechJumpingText 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes hextechJumpingText {
+    0% {
+        transform: translateY(0);
+        text-shadow:
+            0 0 0 #076388,
+            0 0 0 #5af7f6,
+            0 0 0 #0facb2,
+            0 0 0 #a8c8ca;
+    }
+
+    20% {
+        transform: translateY(-1em);
+        text-shadow:
+            0 0.125em 0 #076388,
+            0 0.25em 0 #5af7f6,
+            0 -0.125em 0 #0facb2,
+            0 -0.25em 0 #a8c8ca;
+    }
+
+    40% {
+        transform: translateY(0.5em);
+        text-shadow:
+            0 -0.0625em 0 #076388,
+            0 -0.125em 0 #5af7f6,
+            0 0.0625em 0 #0facb2,
+            0 0.125em 0 #a8c8ca;
+    }
+
+    60% {
+        transform: translateY(-0.25em);
+        text-shadow:
+            0 0.03125em 0 #076388,
+            0 0.0625em 0 #5af7f6,
+            0 -0.03125em 0 #0facb2,
+            0 -0.0625em 0 #a8c8ca;
+    }
+
+    80% {
+        transform: translateY(0);
+        text-shadow:
+            0 0 0 #076388,
+            0 0 0 #5af7f6,
+            0 0 0 #0facb2,
+            0 0 0 #a8c8ca;
     }
 }
