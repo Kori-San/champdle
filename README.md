@@ -1,5 +1,6 @@
 # Champdle
 An Infinite game about LoL's Champion.
+The Game is accessible → [here](https://champdle.vercel.app).
 
 # Pre-requisites
 - make
