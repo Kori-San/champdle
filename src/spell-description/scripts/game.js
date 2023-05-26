@@ -18,7 +18,7 @@ const initScore = 0;
 /* Const gain and ceils */
 const gain = 100;
 const comboGain = gain / 2;
-const comboForHeal = 2;
+const comboForHeal = 5;
 
 /* Basic mechanic */
 let lives = initLives;
